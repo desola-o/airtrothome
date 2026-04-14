@@ -253,7 +253,7 @@
     width: 100%;
     max-width: 1320px;
     margin: 0 auto;
-    padding: 0 30px 60px;
+    padding: 0 30px 110px; /* Increased padding to accommodate marquee */
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -301,6 +301,43 @@
     transform: translateX(-8px) scale(1.02);
     background: rgba(255,255,255,0.3);
     box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+
+  /* ── HEADER MARQUEE ── */
+  .hero-marquee {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 16px 0;
+    z-index: 10;
+    display: flex;
+    overflow: hidden;
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: scrollMarquee 45s linear infinite;
+  }
+  .marquee-item {
+    /* Exact same font styles as .hero-subtitle */
+    font-size: 18px;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.5;
+    letter-spacing: -0.3px;
+    
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+  }
+  @keyframes scrollMarquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
 
   /* ── SECTIONS COMMON ── */
@@ -490,7 +527,7 @@
       color: var(--white); /* Hamburger lines turn white */
     }
     nav.scrolled .nav-logo img {
-      filter: brightness(0); /* Logo changes to solid black */
+      filter: brightness(0) invert(1); /* Ensure the logo is white to contrast against the black background */
     }
   }
 
@@ -588,6 +625,33 @@
       <div class="hero-badge">💎 Exclusive Travel Deals</div>
       <div class="hero-badge">✈️ All-in-One Booking</div>
       <div class="hero-badge">🌍 24/7 Global Support</div>
+    </div>
+  </div>
+
+  <!-- SCROLLING SAMPLE ACTIVITIES MARQUEE -->
+  <div class="hero-marquee fade-up delay-3">
+    <div class="marquee-track">
+      <!-- Set 1 -->
+      <span class="marquee-item">🏖️ Maldives Private Villas</span>
+      <span class="marquee-item">🗼 Paris City Tours</span>
+      <span class="marquee-item">🏜️ Dubai Desert Safaris</span>
+      <span class="marquee-item">🏯 Tokyo Excursions</span>
+      <span class="marquee-item">⛷️ Swiss Alps Skiing</span>
+      <span class="marquee-item">🏝️ Bali Retreats</span>
+      <span class="marquee-item">🗽 NYC Getaways</span>
+      <span class="marquee-item">🍷 Tuscany Wine Tasting</span>
+      <span class="marquee-item">🦁 Serengeti Safaris</span>
+      
+      <!-- Set 2 (Duplicated for continuous seamless loop) -->
+      <span class="marquee-item">🏖️ Maldives Private Villas</span>
+      <span class="marquee-item">🗼 Paris City Tours</span>
+      <span class="marquee-item">🏜️ Dubai Desert Safaris</span>
+      <span class="marquee-item">🏯 Tokyo Excursions</span>
+      <span class="marquee-item">⛷️ Swiss Alps Skiing</span>
+      <span class="marquee-item">🏝️ Bali Retreats</span>
+      <span class="marquee-item">🗽 NYC Getaways</span>
+      <span class="marquee-item">🍷 Tuscany Wine Tasting</span>
+      <span class="marquee-item">🦁 Serengeti Safaris</span>
     </div>
   </div>
 </section>
