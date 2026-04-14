@@ -70,18 +70,17 @@
     background: transparent;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-    border-bottom: 1px solid transparent; /* Removed thin line on load */
-    transition: background 0.4s, backdrop-filter 0.4s, top 0.4s, padding 0.4s, border-color 0.4s;
+    border-bottom: 1px solid transparent; 
+    transition: background 0.5s ease, backdrop-filter 0.5s ease, padding 0.6s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.5s ease;
   }
   nav.scrolled {
     position: fixed;
     top: 0;
-    padding: 12px 0;
-    /* Scrolled Liquid Glass (Light) for ALL devices */
+    padding: 10px 0;
     background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(24px) saturate(200%);
     -webkit-backdrop-filter: blur(24px) saturate(200%);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08); /* Appears only on scroll */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08); 
   }
   .nav-inner {
     max-width: 1320px;
@@ -100,15 +99,15 @@
   .nav-logo:hover { opacity: 0.8; }
   
   .nav-logo img {
-    height: 108px;
+    height: 160px;
     width: auto;
-    transition: filter 0.4s ease, height 0.4s ease;
-    filter: brightness(0) invert(1); /* Unscrolled: White */
+    transition: filter 0.5s ease, height 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    filter: brightness(0) invert(1); 
   }
 
   nav.scrolled .nav-logo img { 
-    height: 72px; 
-    filter: brightness(0); /* Scrolled: Black */
+    height: 95px; 
+    filter: brightness(0); 
   }
 
   .nav-links {
@@ -167,7 +166,6 @@
   .mobile-menu {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    /* Transparent Glass Overlay */
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(28px) saturate(200%);
     -webkit-backdrop-filter: blur(28px) saturate(200%);
@@ -206,7 +204,7 @@
   .pill-btn {
     display: inline-flex;
     align-items: center;
-    gap: 16px;
+    gap: 8px;
     padding: 15px 28px;
     border-radius: 100px;
     font-size: 15px;
@@ -217,20 +215,40 @@
     border: 1px solid currentColor;
     justify-content: center;
   }
-  .pill-btn .dot-sm { width: 7px; height: 7px; border-radius: 50%; }
   .pill-dark { background: var(--black); color: var(--white); border-color: var(--black); }
-  .pill-dark .dot-sm { background: #e3e3e3; }
   .pill-light { background: var(--white); color: var(--black); border-color: var(--white); }
-  .pill-light .dot-sm { background: var(--black); }
   .pill-outline { background: transparent; color: var(--black); border-color: var(--black); }
 
-  /* ── LABEL TAG ── */
+  /* ── SHIMMERING EFFECT ── */
+  @keyframes shimmer {
+    0% { background-position: 200% center; }
+    100% { background-position: -200% center; }
+  }
+
   .section-label {
-    font-size: 15px;
-    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 18px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
     color: var(--muted);
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
     text-transform: uppercase;
+    background: linear-gradient(110deg, var(--sage) 30%, #ffffff 50%, var(--sage) 70%);
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite linear;
+    border: 1px solid rgba(0,0,0,0.06);
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+  }
+
+  .wc-box .section-label {
+    color: rgba(255,255,255,0.9);
+    background: linear-gradient(110deg, rgba(255,255,255,0.1) 30%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.1) 70%);
+    background-size: 200% 100%;
+    border-color: rgba(255,255,255,0.15);
   }
 
   /* ── HERO ── */
@@ -362,20 +380,20 @@
   /* ── SECTIONS COMMON ── */
   section { width: 100%; }
   .container { max-width: 1320px; margin: 0 auto; padding: 0 30px; }
-  .section-pad { padding: 80px 0; } /* TIGHTENED FROM 120px */
+  .section-pad { padding: 80px 0; } 
 
   /* ── ABOUT ── */
   .about { background: var(--white); text-align: center; }
   .about-inner { max-width: 680px; margin: 0 auto; }
-  .about h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 500; line-height: 1.2; letter-spacing: -1px; margin: 15px 0 25px; }
+  .about h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 500; line-height: 1.2; letter-spacing: -1px; margin: 0 0 25px; }
   .about p { font-size: 17px; color: var(--muted); line-height: 1.6; letter-spacing: -0.3px; margin-bottom: 20px; }
 
   /* ── PROCESS & TRUST ── */
   .process { background: var(--cream); position: relative; }
-  .process-top { text-align: center; margin-bottom: 40px; } /* TIGHTENED FROM 60px */
-  .process h2 { font-size: clamp(32px, 5vw, 54px); font-weight: 500; letter-spacing: -1px; margin-top: 15px; }
+  .process-top { text-align: center; margin-bottom: 40px; } 
+  .process h2 { font-size: clamp(32px, 5vw, 54px); font-weight: 500; letter-spacing: -1px; margin-top: 10px; }
   
-  .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 50px; } /* TIGHTENED FROM 80px */
+  .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 50px; } 
   .process-step { 
     background: var(--white); padding: 40px; border-radius: 12px; text-align: center; 
     border: 1px solid var(--beige); transition: transform 0.3s, box-shadow 0.3s; 
@@ -388,7 +406,6 @@
   .process-step h4 { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
   .process-step p { font-size: 15px; color: var(--muted); line-height: 1.5; }
 
-  /* Mobile Scroll Arrows */
   .mobile-scroll-nav { display: none; }
 
   .concierge-box {
@@ -398,13 +415,69 @@
   .concierge-left { flex: 1; }
   .concierge-left h3 { font-size: 28px; font-weight: 600; margin-bottom: 16px; letter-spacing: -0.5px; }
   .concierge-left p { font-size: 16px; color: var(--muted); line-height: 1.6; margin-bottom: 24px; }
-  .concierge-right { flex-shrink: 0; text-align: center; background: var(--sage); padding: 40px; border-radius: 12px; }
-  .deposit-amt { font-size: 48px; font-weight: 600; letter-spacing: -2px; margin-bottom: 10px; line-height: 1; }
-  .deposit-label { font-size: 14px; color: var(--muted); margin-bottom: 20px; font-weight: 500; }
-  .deposit-microcopy { font-size: 13px; color: var(--muted); margin-top: 12px; font-weight: 500; line-height: 1.4; }
+  
+  /* Exclusive Black Card Style for Concierge */
+  .concierge-right { 
+    flex-shrink: 0; 
+    text-align: center; 
+    padding: 40px; 
+    border-radius: 16px; 
+    background: linear-gradient(110deg, #111111 30%, #2b2b2b 50%, #111111 70%);
+    background-size: 200% 100%;
+    animation: shimmer 4s infinite linear;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+    border: 1px solid #222;
+    min-width: 320px;
+    color: var(--white);
+  }
+  
+  .deposit-amt { font-size: 52px; font-weight: 500; letter-spacing: -2px; margin-bottom: 5px; line-height: 1; color: var(--white); }
+  .deposit-label { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 25px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+  .deposit-microcopy { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 15px; font-weight: 500; line-height: 1.4; }
+
+  /* Secure Payment Trust Logos */
+  .secure-payment-trust {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .secure-payment-text {
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .payment-logos-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    opacity: 0.6;
+    /* Make logos white on load to fit black card */
+    filter: grayscale(100%) brightness(200%);
+    transition: all 0.3s ease;
+  }
+  .payment-logos-row:hover {
+    opacity: 1;
+    /* Reveal colors on hover */
+    filter: grayscale(0%) brightness(100%);
+  }
+  .payment-logos-row img {
+    height: 16px;
+    width: auto;
+    object-fit: contain;
+  }
+  .payment-logos-row img.paypal-logo {
+    height: 14px;
+  }
 
   /* ── WORLD CUP PROMO (VIDEO BACKGROUND) ── */
-  .wc-promo { background: var(--white); padding-top: 0; padding-bottom: 40px; } /* TIGHTENED FROM 60px */
+  .wc-promo { background: var(--white); padding-top: 0; padding-bottom: 40px; } 
   .wc-box {
     position: relative;
     background: #000;
@@ -443,9 +516,9 @@
 
   /* ── SERVICES (ACCORDION/FUNNEL) ── */
   .services { background: var(--white); position: relative; }
-  .services-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; } /* TIGHTENED FROM 80px */
+  .services-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; } 
   .services h2 { font-size: clamp(32px, 4vw, 50px); font-weight: 500; line-height: 1.1; letter-spacing: -1.4px; margin-bottom: 20px; }
-  .services-desc { font-size: 17px; color: var(--muted); line-height: 1.6; margin-bottom: 30px; max-width: 500px; } /* TIGHTENED FROM 40px */
+  .services-desc { font-size: 17px; color: var(--muted); line-height: 1.6; margin-bottom: 30px; max-width: 500px; } 
   
   .service-list { display: flex; flex-direction: column; }
   .accordion-item { border-bottom: 1px solid var(--beige); }
@@ -474,13 +547,13 @@
   /* Funnel Action Buttons */
   .service-ctas { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
   .s-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 100px; border: 1px solid var(--sage);
-    background: var(--sage); color: var(--black); transition: all 0.3s ease; display: inline-block;
+    background: var(--sage); color: var(--black); transition: all 0.3s ease;
   }
-  .s-cta-outline {
-    background: transparent;
-    border-color: var(--beige);
-  }
+  .s-cta-outline { background: transparent; border-color: var(--beige); }
 
   /* Square Image Formatting */
   .services-img img { 
@@ -494,9 +567,9 @@
   /* ── TESTIMONIALS ── */
   .testimonials { background: var(--white); text-align: center; }
   .test-wrap { max-width: 900px; margin: 0 auto; position: relative; }
-  .testimonial-quote { font-size: clamp(24px, 3vw, 36px); font-weight: 500; line-height: 1.3; letter-spacing: -0.5px; margin: 30px 0; transition: opacity 0.3s; min-height: 120px; } /* TIGHTENED FROM 40px */
+  .testimonial-quote { font-size: clamp(24px, 3vw, 36px); font-weight: 500; line-height: 1.3; letter-spacing: -0.5px; margin: 30px 0; transition: opacity 0.3s; min-height: 120px; } 
   .client-name { font-size: 16px; font-weight: 600; letter-spacing: -0.2px; }
-  .test-nav { display: flex; justify-content: center; gap: 20px; margin-top: 20px; } /* TIGHTENED FROM 30px */
+  .test-nav { display: flex; justify-content: center; gap: 20px; margin-top: 20px; } 
   .nav-arrow { width: 50px; height: 50px; border: 1px solid var(--beige); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; background: var(--white); transition: 0.2s; }
   .nav-arrow:hover { background: var(--black); color: var(--white); }
   .nav-arrow:hover .arrow-icon { border-color: var(--white); }
@@ -505,7 +578,7 @@
   .arrow-icon.right { transform: rotate(45deg); margin-left: -3px; }
 
   /* ── CONTACT CTA ── */
-  .cta-contact { background: var(--sage); padding: 80px 0; text-align: center; } /* TIGHTENED FROM 100px */
+  .cta-contact { background: var(--sage); padding: 80px 0; text-align: center; } 
   .cta-contact h2 { font-size: clamp(36px, 5vw, 64px); font-weight: 500; letter-spacing: -1.5px; margin-bottom: 20px; }
   .cta-contact p { font-size: 18px; color: var(--muted); max-width: 500px; margin: 0 auto 30px; }
   .contact-methods { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 20px; }
@@ -514,25 +587,24 @@
   .secondary-contacts a:hover { color: var(--accent); }
 
   /* ── FOOTER & NEWSLETTER ── */
-  footer { background: #0a0a0a; color: var(--white); padding: 60px 0 30px; } /* TIGHTENED */
+  footer { background: #0a0a0a; color: var(--white); padding: 60px 0 30px; } 
   .footer-inner { max-width: 1320px; margin: 0 auto; padding: 0 30px; }
   .footer-top { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; padding-bottom: 50px; border-bottom: 1px solid #222; margin-bottom: 30px; }
   .footer-left h3 { font-size: clamp(28px, 3vw, 42px); font-weight: 500; letter-spacing: -1px; margin-bottom: 20px; max-width: 400px; }
   
-  /* Subscription Form Styles Fixed */
   .subscribe-form { display: flex; gap: 10px; max-width: 400px; flex-direction: row; align-items: center; }
   .subscribe-input { 
     flex: 1; 
     height: 52px; 
     min-height: 52px;
-    line-height: normal; /* Fix iOS input compression */
+    line-height: normal; 
     padding: 0 24px; 
     border: 1px solid #333; 
     border-radius: 100px; 
     background: transparent; 
     color: var(--white); 
     outline: none;
-    -webkit-appearance: none; /* Crucial for mobile view */
+    -webkit-appearance: none; 
     box-sizing: border-box;
     margin: 0;
   }
@@ -585,25 +657,23 @@
     .footer-top { grid-template-columns: 1fr; }
     .wc-box { padding: 60px 25px; }
     
-    .nav-logo img { height: 80px; }
+    .nav-logo img { height: 120px; } 
 
-    /* For scrolled state, maintain liquid glass and black hamburger */
     nav.scrolled .hamburger-btn { color: var(--black); }
     nav.scrolled .nav-logo img {
-      height: 60px;
-      filter: brightness(0); /* Make sure logo goes black on light glass */
+      height: 75px; 
+      filter: brightness(0); 
     }
   }
 
   @media (max-width: 600px) {
-    .section-pad { padding: 60px 0; } /* TIGHTENED FOR MOBILE */
+    .section-pad { padding: 60px 0; } 
     .cta-contact { padding: 60px 0; }
 
     .hero-content { flex-direction: column; align-items: flex-start; gap: 40px; }
     .hero-badges { display: none; } 
     .concierge-box { flex-direction: column; text-align: center; gap: 30px; padding: 40px 25px; }
     
-    /* Process Grid Mobile Swipe Container */
     .process-grid {
       display: flex;
       flex-wrap: nowrap;
@@ -611,7 +681,7 @@
       scroll-snap-type: x mandatory;
       gap: 16px;
       padding-bottom: 10px;
-      margin: 0 -30px 20px -30px; /* adjusted bottom margin */
+      margin: 0 -30px 20px -30px; 
       padding: 0 30px 10px 30px; 
       scrollbar-width: none; 
     }
@@ -621,7 +691,6 @@
       scroll-snap-align: center;
     }
 
-    /* Mobile Scroll Nav Arrows */
     .mobile-scroll-nav {
       display: flex; justify-content: center; align-items: center; gap: 16px; margin-bottom: 40px;
     }
@@ -635,7 +704,6 @@
 
     .footer-right { grid-template-columns: 1fr; }
     
-    /* Newsletter Mobile Adjustments */
     .subscribe-form { flex-direction: column; width: 100%; gap: 12px; }
     .subscribe-input { width: 100%; }
     .subscribe-btn { width: 100%; }
@@ -697,10 +765,9 @@
       <h1 class="hero-title fade-up">Your Personal<br>Travel Assistant</h1>
       <p class="hero-subtitle fade-up delay-1">Seamless travel planning, exclusive deals, and stress-free vacations. We plan every detail so you can enjoy every step of the journey.</p>
       
-      <!-- Updated Hero CTA -->
       <div class="hero-cta-group fade-up delay-2">
         <a href="#payment-link" class="pill-btn pill-light">
-          <span class="dot-sm"></span> Plan Your Trip
+          ✨ Plan Your Trip
         </a>
         <p class="hero-microcopy">Start with a $150 concierge deposit</p>
       </div>
@@ -744,7 +811,7 @@
 <!-- ABOUT -->
 <section class="about section-pad" id="about">
   <div class="container about-inner">
-    <p class="section-label fade-up">About Us</p>
+    <div class="section-label fade-up">About Us</div>
     <h2 class="fade-up delay-1">Airtrot Travels connects the world through seamless travel experiences.</h2>
     <p class="fade-up delay-2">
       Airtrot is a travel and tours company built on the belief that planning a trip should be as stress-free as the journey itself. We help individuals, families, and businesses navigate flights, visas, and full travel arrangements with clarity, care, and consistent support. For over ten years, we've worked quietly behind the scenes to make travel easier for our clients—whether it’s a simple ticket or a complete travel package. Our process is transparent, our advice honest, and our goal is always the same: to help you travel confidently, knowing you're in good hands. All personalized travel planning begins with a concierge deposit.
@@ -756,7 +823,7 @@
 <section class="services section-pad" id="services">
   <div class="container services-inner">
     <div class="services-left">
-      <p class="section-label fade-up">Our Services</p>
+      <div class="section-label fade-up">Our Services</div>
       <h2 class="fade-up delay-1">We handle your entire trip from start to finish.</h2>
       <p class="services-desc fade-up delay-2">Flights, hotels, visas, airport transfers, and travel insurance. We offer a range of tour packages and exclusive deals tailored to your needs.</p>
       
@@ -770,7 +837,7 @@
           <div class="accordion-content">
             We build custom itineraries tailored to your exact preferences. From flights and hotels to full daily schedules, we handle everything.
             <div class="service-ctas">
-              <a href="#payment-link" class="s-cta">Start Planning My Trip</a>
+              <a href="#payment-link" class="s-cta">✨ Start Planning My Trip</a>
             </div>
           </div>
         </div>
@@ -783,8 +850,8 @@
           <div class="accordion-content">
             Explore our curated holiday packages for top destinations, perfectly designed for solo travelers, couples, and families.
             <div class="service-ctas">
-              <a href="https://wc2026.airtrottravels.com" class="s-cta" target="_blank">Explore Travel Packages</a>
-              <a href="#payment-link" class="s-cta s-cta-outline">Start Planning My Trip</a>
+              <a href="https://wc2026.airtrottravels.com" class="s-cta" target="_blank">🌍 Explore Travel Packages</a>
+              <a href="#payment-link" class="s-cta s-cta-outline">✨ Start Planning My Trip</a>
             </div>
           </div>
         </div>
@@ -797,7 +864,7 @@
           <div class="accordion-content">
             Coordinating a group? We manage flights, accommodations, and ground transport for family reunions, retreats, and large group trips.
             <div class="service-ctas">
-              <a href="#payment-link" class="s-cta">Plan My Group Trip</a>
+              <a href="#payment-link" class="s-cta">✈️ Plan My Group Trip</a>
             </div>
           </div>
         </div>
@@ -810,7 +877,7 @@
           <div class="accordion-content">
             Expert guidance through visa applications, document preparation, and entry requirements to make international travel seamless.
             <div class="service-ctas">
-              <a href="#payment-link" class="s-cta">Get Visa Support</a>
+              <a href="#payment-link" class="s-cta">🛂 Get Visa Support</a>
             </div>
           </div>
         </div>
@@ -823,8 +890,8 @@
           <div class="accordion-content">
             Streamlined booking solutions, itinerary management, and exclusive group rates designed for business professionals and corporate teams.
             <div class="service-ctas">
-              <a href="mailto:hello@airtrottravels.com" class="s-cta">Request Corporate Travel Setup</a>
-              <a href="#payment-link" class="s-cta s-cta-outline">Schedule Consultation</a>
+              <a href="mailto:hello@airtrottravels.com" class="s-cta">💼 Request Setup</a>
+              <a href="#payment-link" class="s-cta s-cta-outline">🗓️ Schedule Consultation</a>
             </div>
           </div>
         </div>
@@ -837,7 +904,7 @@
           <div class="accordion-content">
             Destination weddings, honeymoons, and premium luxury escapes. We plan your special moments with ultimate care and exclusivity.
             <div class="service-ctas">
-              <a href="#payment-link" class="s-cta">Plan My Experience</a>
+              <a href="#payment-link" class="s-cta">🥂 Plan My Experience</a>
             </div>
           </div>
         </div>
@@ -853,7 +920,7 @@
 <section class="process section-pad" id="process">
   <div class="container">
     <div class="process-top fade-up">
-      <p class="section-label">How it works</p>
+      <div class="section-label">How it works</div>
       <h2>Simple, transparent planning</h2>
     </div>
     
@@ -889,14 +956,33 @@
         <p>Airtrot Travels provides personalized travel planning and concierge services tailored to each client's preferences, destination, and budget. To begin, clients pay a concierge deposit which covers itinerary design, research, and planning services.</p>
         <p style="font-weight: 500; color: var(--black);">* The deposit is applied toward the final cost of the trip when bookings are confirmed.</p>
       </div>
+      
+      <!-- Exclusive Black Card Styled Right Column -->
       <div class="concierge-right">
+        <!-- Faux Chip Icon -->
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto 15px auto; display: block;"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+        
         <div class="deposit-amt">$150</div>
         <div class="deposit-label">Concierge Deposit</div>
-        <a href="#payment-link" class="pill-btn pill-dark" style="width:100%;">
-          Start Planning Now
+        <a href="#payment-link" class="pill-btn pill-light" style="width:100%;">
+          ✨ Start Planning Now
         </a>
         <p class="deposit-microcopy">Required to begin personalized travel planning</p>
+
+        <!-- SECURE PAYMENT TRUST LOGOS -->
+        <div class="secure-payment-trust">
+          <div class="secure-payment-text">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            Secure Payment
+          </div>
+          <div class="payment-logos-row">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" alt="Stripe">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" class="paypal-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg" alt="Apple Pay">
+          </div>
+        </div>
       </div>
+
     </div>
 
   </div>
@@ -912,14 +998,13 @@
       </video>
       <div class="wc-box-overlay"></div>
       
-      <p class="section-label" style="color: var(--white); opacity: 0.8; margin-bottom: 10px;">Special Event</p>
+      <div class="section-label">Special Event</div>
       <h2>🏆 FIFA World Cup 2026™ Packages</h2>
       <p class="wc-desc">Get ready for the ultimate football experience. We offer comprehensive travel packages including flights, accommodations, match transfers, and exclusive experiences across the host cities.</p>
       
-      <!-- Only One CTA here as requested -->
       <div class="wc-buttons">
         <a href="https://wc2026.airtrottravels.com" class="pill-btn pill-light" target="_blank">
-          <span class="dot-sm"></span> Explore World Cup Packages
+          🏆 Explore World Cup Packages
         </a>
       </div>
     </div>
@@ -929,7 +1014,7 @@
 <!-- TESTIMONIALS -->
 <section class="testimonials section-pad">
   <div class="container test-wrap fade-up">
-    <p class="section-label">Client Testimonials</p>
+    <div class="section-label">Client Testimonials</div>
     
     <div id="test-quote" class="testimonial-quote">
       "Made my travel planning so much easier. I usually spend hours comparing flights and hotels, but Airtrot took care of everything and got me a great deal. Smooth process, no hassle."
@@ -954,7 +1039,7 @@
     <p>Speak instantly with a travel agent for quick replies, general inquiries, or last-minute travel support before beginning your formal planning.</p>
     
     <div class="contact-methods">
-      <a href="#payment-link" class="pill-btn pill-dark">Start Planning</a>
+      <a href="#payment-link" class="pill-btn pill-dark">✨ Start Planning</a>
     </div>
     
     <div class="secondary-contacts">
@@ -973,7 +1058,7 @@
         <h3>Get exclusive deals sent straight to your inbox</h3>
         <form class="subscribe-form" id="newsletter-form">
           <input type="email" name="email" class="subscribe-input" placeholder="Sign up for free" required>
-          <button type="submit" class="pill-btn pill-light subscribe-btn">Subscribe</button>
+          <button type="submit" class="pill-btn pill-light subscribe-btn">✉️ Subscribe</button>
         </form>
       </div>
       
@@ -1011,7 +1096,7 @@
   <div class="modal-content">
     <h3>🎉 You're In!</h3>
     <p>Thanks for subscribing. Keep an eye on your inbox for exclusive travel deals and updates.</p>
-    <button id="close-modal" class="pill-btn pill-dark" style="width: 100%;">Close</button>
+    <button id="close-modal" class="pill-btn pill-dark" style="width: 100%;">✖️ Close</button>
   </div>
 </div>
 
