@@ -84,14 +84,21 @@
   .nav-logo:hover {
     opacity: 0.8;
   }
+  
+  /* LOGO FILTERING FOR PERFECT CONTRAST */
   .nav-logo img {
-    height: 108px; /* 300% bigger than the original 36px */
+    height: 108px;
     width: auto;
-    transition: filter 0.4s, height 0.4s;
+    transition: filter 0.4s ease, height 0.4s ease;
+    /* Unscrolled (All devices): sits over dark hero video -> force to white */
+    filter: brightness(0) invert(1);
   }
 
-  /* Shrink logo slightly on scroll so the navbar doesn't take up too much vertical space */
-  nav.scrolled .nav-logo img { height: 72px; }
+  nav.scrolled .nav-logo img { 
+    height: 72px; 
+    /* Scrolled (Desktop): nav background is white -> force to black */
+    filter: brightness(0); 
+  }
 
   .nav-links {
     display: flex;
@@ -323,12 +330,10 @@
     animation: scrollMarquee 45s linear infinite;
   }
   .marquee-item {
-    /* Exact same font styles as .hero-subtitle */
     font-size: 18px;
     color: rgba(255,255,255,0.9);
     line-height: 1.5;
     letter-spacing: -0.3px;
-    
     padding: 0 40px;
     display: flex;
     align-items: center;
@@ -455,7 +460,7 @@
   }
   .s-cta:hover { background: var(--accent); color: var(--white); transform: translateY(-2px); }
 
-  /* Square Image Formatting with 0-degree angles */
+  /* Square Image Formatting */
   .services-img img { 
     border-radius: 0; 
     width: 100%; 
@@ -507,27 +512,26 @@
 
   /* ── RESPONSIVE & MOBILE TWEAKS ── */
   @media (max-width: 900px) {
-    .nav-links, .nav-cta { display: none; } /* Hide desktop links */
-    .hamburger-btn { display: block; } /* Show hamburger icon */
+    .nav-links, .nav-cta { display: none; }
+    .hamburger-btn { display: block; }
     .services-inner { grid-template-columns: 1fr; gap: 50px; }
     .services-img { order: -1; } 
     .footer-top { grid-template-columns: 1fr; }
     .wc-box { padding: 60px 25px; }
     
-    /* Slightly reduce the logo size on smaller tablets/mobile screens to preserve space */
     .nav-logo img { height: 80px; }
-    nav.scrolled .nav-logo img { height: 60px; }
 
-    /* MOBILE SCROLL BEHAVIOR UPDATES */
     nav.scrolled {
-      background: rgba(0, 0, 0, 0.98); /* To change nav background back to white, use: rgba(255,255,255,0.95) */
+      background: rgba(0, 0, 0, 0.98);
       border-bottom: 1px solid #333;
     }
     nav.scrolled .hamburger-btn {
-      color: var(--white); /* Hamburger lines turn white */
+      color: var(--white);
     }
     nav.scrolled .nav-logo img {
-      filter: brightness(0) invert(1); /* Ensure the logo is white to contrast against the black background */
+      height: 60px;
+      /* Scrolled (Mobile): nav background is black -> force logo to white */
+      filter: brightness(0) invert(1);
     }
   }
 
@@ -620,7 +624,7 @@
       </a>
     </div>
     
-    <!-- Updated Hero Badges (Emojis + Enhanced Hover included in CSS) -->
+    <!-- Hero Badges -->
     <div class="hero-badges fade-up delay-3">
       <div class="hero-badge">💎 Exclusive Travel Deals</div>
       <div class="hero-badge">✈️ All-in-One Booking</div>
@@ -769,7 +773,6 @@
       </div>
     </div>
     <div class="services-img fade-up delay-2">
-      <!-- Updated image source & formatting -->
       <img src="https://i.ibb.co/GQ2ctwJ8/jahanzeb-ahsan-KKo-Cyi-U-x-AU-unsplash.jpg" alt="Travel Planning Services">
     </div>
   </div>
@@ -925,12 +928,12 @@
 
   openMenuBtn.addEventListener('click', () => {
     mobileMenu.classList.add('active');
-    document.body.style.overflow = 'hidden'; // Stop background scrolling
+    document.body.style.overflow = 'hidden'; 
   });
 
   function closeMenu() {
     mobileMenu.classList.remove('active');
-    document.body.style.overflow = ''; // Resume scrolling
+    document.body.style.overflow = ''; 
   }
 
   closeMenuBtn.addEventListener('click', closeMenu);
@@ -953,12 +956,10 @@
       const parent = acc.parentElement;
       const isActive = parent.classList.contains('active');
       
-      // Close all accordions
       document.querySelectorAll('.accordion-item').forEach(item => {
         item.classList.remove('active');
       });
 
-      // If the clicked one wasn't active, open it
       if (!isActive) {
         parent.classList.add('active');
       }
