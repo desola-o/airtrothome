@@ -408,6 +408,7 @@
 
   .mobile-scroll-nav { display: none; }
 
+  /* Concierge Box Main Wrapper */
   .concierge-box {
     background: var(--white); border: 1px solid var(--beige); border-radius: 16px;
     padding: 50px; display: flex; align-items: center; gap: 50px; box-shadow: 0 20px 40px rgba(0,0,0,0.03);
@@ -415,29 +416,245 @@
   .concierge-left { flex: 1; }
   .concierge-left h3 { font-size: 28px; font-weight: 600; margin-bottom: 16px; letter-spacing: -0.5px; }
   .concierge-left p { font-size: 16px; color: var(--muted); line-height: 1.6; margin-bottom: 24px; }
-  
-  /* Exclusive Black Card Style for Concierge */
-  .concierge-right { 
-    flex-shrink: 0; 
-    text-align: center; 
-    padding: 40px; 
-    border-radius: 16px; 
-    background: linear-gradient(110deg, #111111 30%, #2b2b2b 50%, #111111 70%);
-    background-size: 200% 100%;
-    animation: shimmer 4s infinite linear;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
-    border: 1px solid #222;
-    min-width: 320px;
-    color: var(--white);
+
+  /* ── SKEUOMORPHIC AMEX BLACK CARD STYLES ── */
+  .concierge-right-wrapper {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    min-width: 380px;
+    perspective: 1200px; /* Important for the 3D tilt */
+  }
+
+  .black-card-container {
+    display: block;
+    width: 100%;
+    max-width: 380px;
+    text-decoration: none;
+    transform-style: preserve-3d;
+  }
+
+  .black-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1.586 / 1; /* Classic Credit Card Ratio */
+    border-radius: 16px;
+    background: radial-gradient(circle at 50% 0%, #4a4a4a 0%, #202020 40%, #0d0d0d 100%);
+    box-shadow: 
+      0 25px 50px -12px rgba(0,0,0,0.5), 
+      0 10px 20px -5px rgba(0,0,0,0.3),
+      inset 0 1px 2px rgba(255,255,255,0.2), 
+      inset 0 -1px 2px rgba(0,0,0,0.8),
+      inset 1px 0 2px rgba(255,255,255,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px;
+    color: #fff;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: pointer;
+  }
+
+  /* Glare Overlay Effect */
+  .black-card::before {
+    content: '';
+    position: absolute;
+    top: -100%; left: -100%; 
+    width: 300%; height: 300%;
+    background: linear-gradient(
+      115deg, 
+      transparent 0%, 
+      transparent 40%, 
+      rgba(255, 255, 255, 0.1) 45%, 
+      rgba(255, 255, 255, 0.25) 50%, 
+      transparent 55%, 
+      transparent 100%
+    );
+    transform: rotate(25deg) translateY(-20%);
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .black-card-container:hover .black-card {
+    transform: scale(1.02) translateY(-10px) rotateX(6deg) rotateY(-8deg);
+    box-shadow: 
+      25px 35px 60px -10px rgba(0,0,0,0.6), 
+      0 15px 25px -5px rgba(0,0,0,0.4),
+      inset 0 1px 2px rgba(255,255,255,0.3), 
+      inset 0 -1px 2px #000;
+  }
+
+  .black-card-container:hover .black-card::before {
+    transform: rotate(25deg) translateY(35%);
+  }
+
+  /* Inner Card Border */
+  .card-border-ring {
+    position: absolute;
+    inset: 12px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Top Section */
+  .card-top {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+  .card-brand {
+    font-family: 'Instrument Serif', serif;
+    font-size: 22px;
+    letter-spacing: 3.5px;
+    color: rgba(255,255,255,0.85);
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px #000, -1px -1px 1px rgba(255,255,255,0.15);
+  }
+
+  /* Middle Section */
+  .card-middle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    padding: 0 4px;
+  }
+
+  /* Metallic EMV Chip */
+  .card-chip {
+    width: 44px;
+    height: 32px;
+    background: linear-gradient(135deg, #e8ce8a 0%, #a4812f 50%, #e8ce8a 100%);
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+      inset 0 0 5px rgba(0,0,0,0.6), 
+      0 1px 3px rgba(0,0,0,0.5);
+  }
+  .chip-line { position: absolute; background: rgba(0,0,0,0.35); }
+  .chip-line.horizontal { top: 50%; left: 0; right: 0; height: 1px; }
+  .chip-line.vertical { top: 0; bottom: 0; width: 1px; }
+  .chip-line.vertical.left { left: 30%; }
+  .chip-line.vertical.right { right: 30%; }
+
+  /* Center Medallion (Replaces Centurion) */
+  .card-medallion {
+    width: 52px;
+    height: 52px;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.6), 0 2px 4px rgba(0,0,0,0.4);
+    background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(0,0,0,0.3) 100%);
+  }
+
+  .contactless-icon {
+    width: 24px;
+    height: 24px;
+    opacity: 0.5;
+    transform: rotate(90deg);
+  }
+
+  /* Bottom Section (Embossed Text) */
+  .card-bottom {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 4px;
   }
   
-  .deposit-amt { font-size: 52px; font-weight: 500; letter-spacing: -2px; margin-bottom: 5px; line-height: 1; color: var(--white); }
-  .deposit-label { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 25px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-  .deposit-microcopy { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 15px; font-weight: 500; line-height: 1.4; }
+  .card-embossed-amount {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: #b0b0b0; /* Titanium Embossed look */
+    text-shadow: 
+      -1px -1px 1px rgba(0, 0, 0, 0.9), 
+      1px 1px 1px rgba(255, 255, 255, 0.25);
+  }
+
+  .card-details-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  
+  .card-name {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #b0b0b0;
+    text-transform: uppercase;
+    text-shadow: -1px -1px 1px rgba(0,0,0,0.9), 1px 1px 1px rgba(255,255,255,0.25);
+  }
+
+  .card-member {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 8px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.1;
+  }
+  .member-year {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
+    color: #b0b0b0;
+    text-shadow: -1px -1px 1px rgba(0,0,0,0.9), 1px 1px 1px rgba(255,255,255,0.25);
+  }
+
+  /* Click-to-action Overlay inside the card */
+  .card-cta-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 20;
+    border-radius: 16px;
+  }
+  .black-card-container:hover .card-cta-overlay {
+    opacity: 1;
+  }
+  .card-cta-pill {
+    background: var(--white);
+    color: var(--black);
+    padding: 12px 24px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transform: translateY(15px);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  .black-card-container:hover .card-cta-pill {
+    transform: translateY(0);
+  }
 
   /* Secure Payment Trust Logos */
   .secure-payment-trust {
-    margin-top: 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -446,7 +663,7 @@
   .secure-payment-text {
     font-size: 11px;
     font-weight: 700;
-    color: rgba(255,255,255,0.7);
+    color: var(--muted);
     text-transform: uppercase;
     letter-spacing: 0.5px;
     display: flex;
@@ -457,15 +674,13 @@
     display: flex;
     align-items: center;
     gap: 14px;
-    opacity: 0.6;
-    /* Make logos white on load to fit black card */
-    filter: grayscale(100%) brightness(200%);
+    opacity: 0.5;
+    filter: grayscale(100%);
     transition: all 0.3s ease;
   }
   .payment-logos-row:hover {
     opacity: 1;
-    /* Reveal colors on hover */
-    filter: grayscale(0%) brightness(100%);
+    filter: grayscale(0%);
   }
   .payment-logos-row img {
     height: 16px;
@@ -674,6 +889,11 @@
     .hero-badges { display: none; } 
     .concierge-box { flex-direction: column; text-align: center; gap: 30px; padding: 40px 25px; }
     
+    .concierge-right-wrapper {
+      min-width: 100%;
+      width: 100%;
+    }
+
     .process-grid {
       display: flex;
       flex-wrap: nowrap;
@@ -957,17 +1177,60 @@
         <p style="font-weight: 500; color: var(--black);">* The deposit is applied toward the final cost of the trip when bookings are confirmed.</p>
       </div>
       
-      <!-- Exclusive Black Card Styled Right Column -->
-      <div class="concierge-right">
-        <!-- Faux Chip Icon -->
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto 15px auto; display: block;"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
-        
-        <div class="deposit-amt">$150</div>
-        <div class="deposit-label">Concierge Deposit</div>
-        <a href="#payment-link" class="pill-btn pill-light" style="width:100%;">
-          ✨ Start Planning Now
+      <!-- EXCLUSIVE AMEX "BLACK CARD" STYLED CTA -->
+      <div class="concierge-right-wrapper">
+        <a href="#payment-link" class="black-card-container">
+          <div class="black-card">
+            
+            <div class="card-border-ring"></div>
+            
+            <div class="card-top">
+              <div class="card-brand">Airtrot Travels</div>
+            </div>
+
+            <div class="card-middle">
+              <div class="card-chip">
+                <div class="chip-line horizontal"></div>
+                <div class="chip-line vertical left"></div>
+                <div class="chip-line vertical right"></div>
+              </div>
+
+              <!-- Sleek Globe/Medallion replacing Centurion -->
+              <div class="card-medallion">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
+              </div>
+              
+              <!-- Contactless Symbol -->
+              <svg class="contactless-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+                <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                <line x1="12" y1="20" x2="12.01" y2="20"></line>
+              </svg>
+            </div>
+
+            <div class="card-bottom">
+              <div class="card-embossed-amount">$150.00 DEPOSIT</div>
+              <div class="card-details-row">
+                <div class="card-name">CONCIERGE CLIENT</div>
+                <div class="card-member">
+                  <span>Member<br>Since</span>
+                  <span class="member-year">26</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hover CTA overlay -->
+            <div class="card-cta-overlay">
+              <div class="card-cta-pill">✨ Tap to Start Planning</div>
+            </div>
+
+          </div>
         </a>
-        <p class="deposit-microcopy">Required to begin personalized travel planning</p>
 
         <!-- SECURE PAYMENT TRUST LOGOS -->
         <div class="secure-payment-trust">
