@@ -219,6 +219,24 @@
   .pill-light { background: var(--white); color: var(--black); border-color: var(--white); }
   .pill-outline { background: transparent; color: var(--black); border-color: var(--black); }
 
+  /* ── POLICY MICROCOPY ── */
+  .policy-microcopy {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 8px;
+    display: block;
+    width: 100%;
+    line-height: 1.4;
+  }
+  .policy-microcopy a {
+    text-decoration: underline;
+    color: inherit;
+    transition: color 0.3s;
+  }
+  .policy-microcopy a:hover {
+    color: var(--black);
+  }
+
   /* ── SHIMMERING EFFECT ── */
   @keyframes shimmer {
     0% { background-position: 200% center; }
@@ -313,6 +331,13 @@
     letter-spacing: -0.2px;
     padding-left: 15px;
   }
+  .hero-microcopy a {
+    color: rgba(255,255,255,0.9);
+    transition: color 0.3s;
+  }
+  .hero-microcopy a:hover {
+    color: var(--white);
+  }
 
   .hero-badges {
     display: flex;
@@ -387,59 +412,111 @@
   .about-inner { max-width: 680px; margin: 0 auto; }
   .about h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 500; line-height: 1.2; letter-spacing: -1px; margin: 0 0 25px; }
   .about p { font-size: 17px; color: var(--muted); line-height: 1.6; letter-spacing: -0.3px; margin-bottom: 20px; }
+  .about p a { text-decoration: underline; transition: color 0.3s; }
+  .about p a:hover { color: var(--black); }
 
   /* ── PROCESS & TRUST ── */
   .process { background: var(--cream); position: relative; }
   .process-top { text-align: center; margin-bottom: 40px; } 
   .process h2 { font-size: clamp(32px, 5vw, 54px); font-weight: 500; letter-spacing: -1px; margin-top: 10px; }
   
-  .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 50px; } 
+  .process-grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 40px; 
+    margin-bottom: 60px; 
+    align-items: stretch; /* Ensures cards are equal height */
+  } 
   .process-step { 
-    background: var(--white); padding: 40px; border-radius: 12px; text-align: center; 
-    border: 1px solid var(--beige); transition: transform 0.3s, box-shadow 0.3s; 
+    background: var(--white); 
+    padding: 40px 30px; 
+    border-radius: 20px; 
+    text-align: center; 
+    border: 1px solid var(--beige); 
+    transition: transform 0.3s, box-shadow 0.3s; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .process-step:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(0,0,0,0.04);
   }
-  .step-num { width: 40px; height: 40px; border-radius: 50%; background: var(--black); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 600; margin: 0 auto 20px; }
-  .process-step h4 { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
-  .process-step p { font-size: 15px; color: var(--muted); line-height: 1.5; }
+  .step-num { 
+    width: 44px; height: 44px; 
+    border-radius: 50%; 
+    background: var(--black); color: var(--white); 
+    display: flex; align-items: center; justify-content: center; 
+    font-size: 18px; font-weight: 600; 
+    margin: 0 auto 20px; 
+  }
+  .process-step h4 { font-size: 20px; font-weight: 600; margin-bottom: 12px; letter-spacing: -0.3px; }
+  .process-step p { font-size: 15px; color: var(--muted); line-height: 1.5; flex-grow: 1; margin-bottom: 0; }
 
   .mobile-scroll-nav { display: none; }
 
-  /* Concierge Box Main Wrapper */
+  /* ── CONCIERGE BOX LAYOUT ── */
   .concierge-box {
-    background: var(--white); border: 1px solid var(--beige); border-radius: 16px;
-    padding: 50px; display: flex; align-items: center; gap: 50px; box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+    background: var(--white); 
+    border: 1px solid var(--beige); 
+    border-radius: 24px;
+    padding: 60px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    gap: 60px; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.03);
   }
-  .concierge-left { flex: 1; }
-  .concierge-left h3 { font-size: 28px; font-weight: 600; margin-bottom: 16px; letter-spacing: -0.5px; }
-  .concierge-left p { font-size: 16px; color: var(--muted); line-height: 1.6; margin-bottom: 24px; }
+  .concierge-left { 
+    flex: 1; 
+    max-width: 540px;
+  }
+  .concierge-left h3 { 
+    font-size: clamp(28px, 4vw, 36px); 
+    font-weight: 600; 
+    margin-bottom: 18px; 
+    letter-spacing: -0.8px; 
+    line-height: 1.2;
+  }
+  .concierge-left p { 
+    font-size: 17px; 
+    color: var(--muted); 
+    line-height: 1.6; 
+    margin-bottom: 24px; 
+  }
+  .concierge-left .fine-print {
+    font-size: 14.5px;
+    font-weight: 500; 
+    color: var(--black);
+    line-height: 1.5;
+    background: var(--sage);
+    padding: 16px 20px;
+    border-radius: 12px;
+    margin-bottom: 0;
+  }
 
-  /* ── SKEUOMORPHIC AMEX BLACK CARD STYLES ── */
   .concierge-right-wrapper {
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-    min-width: 380px;
-    perspective: 1200px; /* Important for the 3D tilt */
+    width: 100%;
+    max-width: 380px;
   }
 
+  /* SKEUOMORPHIC AMEX BLACK CARD */
   .black-card-container {
     display: block;
     width: 100%;
-    max-width: 380px;
-    text-decoration: none;
     transform-style: preserve-3d;
+    perspective: 1200px;
+    margin-bottom: 28px;
   }
 
   .black-card {
     position: relative;
     width: 100%;
-    aspect-ratio: 1.586 / 1; /* Classic Credit Card Ratio */
+    aspect-ratio: 1.586 / 1; 
     border-radius: 16px;
     background: radial-gradient(circle at 50% 0%, #4a4a4a 0%, #202020 40%, #0d0d0d 100%);
     box-shadow: 
@@ -456,10 +533,8 @@
     color: #fff;
     transform-style: preserve-3d;
     transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-    cursor: pointer;
   }
 
-  /* Glare Overlay Effect */
   .black-card::before {
     content: '';
     position: absolute;
@@ -493,7 +568,6 @@
     transform: rotate(25deg) translateY(35%);
   }
 
-  /* Inner Card Border */
   .card-border-ring {
     position: absolute;
     inset: 12px;
@@ -503,12 +577,7 @@
     z-index: 1;
   }
 
-  /* Top Section */
-  .card-top {
-    text-align: center;
-    position: relative;
-    z-index: 2;
-  }
+  .card-top { text-align: center; position: relative; z-index: 2; }
   .card-brand {
     font-family: 'Instrument Serif', serif;
     font-size: 22px;
@@ -518,7 +587,6 @@
     text-shadow: 1px 1px 1px #000, -1px -1px 1px rgba(255,255,255,0.15);
   }
 
-  /* Middle Section */
   .card-middle {
     display: flex;
     justify-content: space-between;
@@ -528,17 +596,11 @@
     padding: 0 4px;
   }
 
-  /* Metallic EMV Chip */
   .card-chip {
-    width: 44px;
-    height: 32px;
+    width: 44px; height: 32px;
     background: linear-gradient(135deg, #e8ce8a 0%, #a4812f 50%, #e8ce8a 100%);
-    border-radius: 5px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 
-      inset 0 0 5px rgba(0,0,0,0.6), 
-      0 1px 3px rgba(0,0,0,0.5);
+    border-radius: 5px; position: relative; overflow: hidden;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.5);
   }
   .chip-line { position: absolute; background: rgba(0,0,0,0.35); }
   .chip-line.horizontal { top: 50%; left: 0; right: 0; height: 1px; }
@@ -546,111 +608,64 @@
   .chip-line.vertical.left { left: 30%; }
   .chip-line.vertical.right { right: 30%; }
 
-  /* Center Medallion (Replaces Centurion) */
   .card-medallion {
-    width: 52px;
-    height: 52px;
-    border: 1px solid rgba(255,255,255,0.25);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 52px; height: 52px;
+    border: 1px solid rgba(255,255,255,0.25); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
     box-shadow: inset 0 0 15px rgba(0,0,0,0.6), 0 2px 4px rgba(0,0,0,0.4);
     background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(0,0,0,0.3) 100%);
   }
 
-  .contactless-icon {
-    width: 24px;
-    height: 24px;
-    opacity: 0.5;
-    transform: rotate(90deg);
-  }
+  .contactless-icon { width: 24px; height: 24px; opacity: 0.5; transform: rotate(90deg); }
 
-  /* Bottom Section (Embossed Text) */
   .card-bottom {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 0 4px;
+    position: relative; z-index: 2; display: flex; flex-direction: column; gap: 8px; padding: 0 4px;
   }
-  
   .card-embossed-amount {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 20px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    color: #b0b0b0; /* Titanium Embossed look */
-    text-shadow: 
-      -1px -1px 1px rgba(0, 0, 0, 0.9), 
-      1px 1px 1px rgba(255, 255, 255, 0.25);
+    font-family: 'Courier New', Courier, monospace; font-size: 20px; font-weight: 600;
+    letter-spacing: 3px; color: #b0b0b0; 
+    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.9), 1px 1px 1px rgba(255, 255, 255, 0.25);
   }
 
-  .card-details-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
-  
+  .card-details-row { display: flex; justify-content: space-between; align-items: flex-end; }
   .card-name {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 13px;
-    letter-spacing: 2px;
-    color: #b0b0b0;
-    text-transform: uppercase;
+    font-family: 'Courier New', Courier, monospace; font-size: 13px; letter-spacing: 2px;
+    color: #b0b0b0; text-transform: uppercase;
     text-shadow: -1px -1px 1px rgba(0,0,0,0.9), 1px 1px 1px rgba(255,255,255,0.25);
   }
 
   .card-member {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 8px;
-    color: rgba(255,255,255,0.5);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    line-height: 1.1;
+    display: flex; align-items: center; gap: 6px; font-size: 8px; color: rgba(255,255,255,0.5);
+    text-transform: uppercase; letter-spacing: 1px; line-height: 1.1;
   }
   .member-year {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 13px;
-    color: #b0b0b0;
+    font-family: 'Courier New', Courier, monospace; font-size: 13px; color: #b0b0b0;
     text-shadow: -1px -1px 1px rgba(0,0,0,0.9), 1px 1px 1px rgba(255,255,255,0.25);
   }
 
-  /* Click-to-action Overlay inside the card */
-  .card-cta-overlay {
-    position: absolute;
-    inset: 0;
+  /* NEW CONCIERGE ACTION AREA */
+  .concierge-cta-area {
+    width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background: rgba(0,0,0,0.4);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: 20;
-    border-radius: 16px;
+    margin-bottom: 28px;
   }
-  .black-card-container:hover .card-cta-overlay {
-    opacity: 1;
+  .cta-primary-btn {
+    width: 100%;
+    font-size: 16px;
+    padding: 18px 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    border: none;
+    margin-bottom: 12px;
   }
-  .card-cta-pill {
-    background: var(--white);
-    color: var(--black);
-    padding: 12px 24px;
-    border-radius: 100px;
-    font-size: 14px;
+  .concierge-urgency {
+    font-size: 13.5px;
+    color: var(--accent);
     font-weight: 600;
     letter-spacing: -0.2px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    transform: translateY(15px);
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-  }
-  .black-card-container:hover .card-cta-pill {
-    transform: translateY(0);
+    text-align: center;
+    line-height: 1.4;
   }
 
   /* Secure Payment Trust Logos */
@@ -661,35 +676,15 @@
     gap: 12px;
   }
   .secure-payment-text {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase;
+    letter-spacing: 0.5px; display: flex; align-items: center; gap: 5px;
   }
   .payment-logos-row {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    opacity: 0.5;
-    filter: grayscale(100%);
-    transition: all 0.3s ease;
+    display: flex; align-items: center; gap: 14px; opacity: 0.5; filter: grayscale(100%); transition: all 0.3s ease;
   }
-  .payment-logos-row:hover {
-    opacity: 1;
-    filter: grayscale(0%);
-  }
-  .payment-logos-row img {
-    height: 16px;
-    width: auto;
-    object-fit: contain;
-  }
-  .payment-logos-row img.paypal-logo {
-    height: 14px;
-  }
+  .payment-logos-row:hover { opacity: 1; filter: grayscale(0%); }
+  .payment-logos-row img { height: 16px; width: auto; object-fit: contain; }
+  .payment-logos-row img.paypal-logo { height: 14px; }
 
   /* ── WORLD CUP PROMO (VIDEO BACKGROUND) ── */
   .wc-promo { background: var(--white); padding-top: 0; padding-bottom: 40px; } 
@@ -708,23 +703,12 @@
     justify-content: center;
   }
   .wc-box-video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;
   }
   .wc-box-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.85) 100%);
-    z-index: 1;
+    position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.85) 100%); z-index: 1;
   }
-  .wc-box h2, .wc-box p, .wc-box .pill-btn, .wc-box .section-label, .wc-box .wc-buttons {
-    position: relative;
-    z-index: 2; 
-  }
+  .wc-box h2, .wc-box p, .wc-box .pill-btn, .wc-box .section-label, .wc-box .wc-buttons { position: relative; z-index: 2; }
   .wc-box h2 { font-size: clamp(32px, 5vw, 48px); font-weight: 500; margin-bottom: 20px; letter-spacing: -1px; }
   .wc-box p.wc-desc { font-size: 18px; line-height: 1.6; max-width: 650px; margin: 0 auto 35px; opacity: 0.9; }
   .wc-buttons { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
@@ -759,24 +743,16 @@
   .accordion-item.active .service-icon::after { background: var(--white); }
   .accordion-item.active .accordion-header { color: var(--accent); }
 
-  /* Funnel Action Buttons */
-  .service-ctas { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+  .service-ctas { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; align-items: center; }
   .s-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
+    display: inline-flex; align-items: center; gap: 6px;
     font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 100px; border: 1px solid var(--sage);
     background: var(--sage); color: var(--black); transition: all 0.3s ease;
   }
   .s-cta-outline { background: transparent; border-color: var(--beige); }
 
-  /* Square Image Formatting */
   .services-img img { 
-    border-radius: 0; 
-    width: 100%; 
-    aspect-ratio: 1 / 1; 
-    object-fit: cover;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.06); 
+    border-radius: 0; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; box-shadow: 0 20px 40px rgba(0,0,0,0.06); 
   }
 
   /* ── TESTIMONIALS ── */
@@ -796,8 +772,8 @@
   .cta-contact { background: var(--sage); padding: 80px 0; text-align: center; } 
   .cta-contact h2 { font-size: clamp(36px, 5vw, 64px); font-weight: 500; letter-spacing: -1.5px; margin-bottom: 20px; }
   .cta-contact p { font-size: 18px; color: var(--muted); max-width: 500px; margin: 0 auto 30px; }
-  .contact-methods { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 20px; }
-  .secondary-contacts { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; font-size: 15px; font-weight: 500; }
+  .contact-methods { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 10px; }
+  .secondary-contacts { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; font-size: 15px; font-weight: 500; margin-top: 25px; }
   .secondary-contacts a { color: var(--muted); transition: color 0.3s; }
   .secondary-contacts a:hover { color: var(--accent); }
 
@@ -808,33 +784,18 @@
   .footer-left h3 { font-size: clamp(28px, 3vw, 42px); font-weight: 500; letter-spacing: -1px; margin-bottom: 20px; max-width: 400px; }
   
   .subscribe-form { display: flex; gap: 10px; max-width: 400px; flex-direction: row; align-items: center; }
-  .subscribe-input { 
-    flex: 1; 
-    height: 52px; 
-    min-height: 52px;
-    line-height: normal; 
-    padding: 0 24px; 
-    border: 1px solid #333; 
-    border-radius: 100px; 
-    background: transparent; 
-    color: var(--white); 
-    outline: none;
-    -webkit-appearance: none; 
-    box-sizing: border-box;
-    margin: 0;
-  }
-  .subscribe-btn {
-    height: 52px;
-    min-height: 52px;
-    margin: 0;
-    box-sizing: border-box;
-    white-space: nowrap;
-  }
+  .subscribe-input { flex: 1; height: 52px; min-height: 52px; padding: 0 24px; border: 1px solid #333; border-radius: 100px; background: transparent; color: var(--white); outline: none; -webkit-appearance: none; box-sizing: border-box; }
+  .subscribe-btn { height: 52px; min-height: 52px; margin: 0; box-sizing: border-box; white-space: nowrap; }
 
-  .footer-right { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .footer-agreement-text { font-size: 13px; color: #888; margin-top: 16px; max-width: 400px; line-height: 1.5; }
+  .footer-agreement-text a { color: #ccc; text-decoration: underline; text-underline-offset: 2px; transition: color 0.3s; }
+  .footer-agreement-text a:hover { color: var(--white); }
+
+  .footer-right { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 30px; }
   .footer-col h6 { font-size: 13px; font-weight: 600; color: #888; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 1px; }
-  .footer-col p, .footer-col a { display: block; font-size: 15px; color: #ccc; margin-bottom: 12px; transition: 0.3s; }
+  .footer-col p, .footer-col a { display: block; font-size: 15px; color: #ccc; margin-bottom: 12px; transition: 0.3s; line-height: 1.5;}
   .footer-col a:hover { color: var(--white); padding-left: 4px; }
+  
   .footer-bottom { display: flex; justify-content: space-between; align-items: center; color: #666; font-size: 14px; }
   .footer-bottom a { color: #666; transition: color 0.3s; }
   .footer-bottom a:hover { color: var(--white); }
@@ -864,6 +825,25 @@
   .delay-3 { transition-delay: 0.3s; }
 
   /* ── RESPONSIVE & MOBILE TWEAKS ── */
+  @media (max-width: 1024px) {
+    .concierge-box {
+      flex-direction: column;
+      text-align: center;
+      padding: 50px 30px;
+    }
+    .concierge-left {
+      max-width: 100%;
+      align-items: center;
+    }
+    .concierge-left h3 {
+      font-size: clamp(28px, 5vw, 36px);
+    }
+    .concierge-left .fine-print {
+      text-align: center;
+    }
+    .footer-right { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  }
+
   @media (max-width: 900px) {
     .nav-links, .nav-cta { display: none; }
     .hamburger-btn { display: block; }
@@ -871,7 +851,6 @@
     .services-img { order: -1; } 
     .footer-top { grid-template-columns: 1fr; }
     .wc-box { padding: 60px 25px; }
-    
     .nav-logo img { height: 120px; } 
 
     nav.scrolled .hamburger-btn { color: var(--black); }
@@ -887,7 +866,6 @@
 
     .hero-content { flex-direction: column; align-items: flex-start; gap: 40px; }
     .hero-badges { display: none; } 
-    .concierge-box { flex-direction: column; text-align: center; gap: 30px; padding: 40px 25px; }
     
     .concierge-right-wrapper {
       min-width: 100%;
@@ -922,7 +900,7 @@
     .m-scroll-btn:hover { background: var(--black); color: var(--white); border-color: var(--black); }
     .m-scroll-text { font-size: 13px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
 
-    .footer-right { grid-template-columns: 1fr; }
+    .footer-right { grid-template-columns: 1fr; gap: 30px; }
     
     .subscribe-form { flex-direction: column; width: 100%; gap: 12px; }
     .subscribe-input { width: 100%; }
@@ -986,10 +964,10 @@
       <p class="hero-subtitle fade-up delay-1">Seamless travel planning, exclusive deals, and stress-free vacations. We plan every detail so you can enjoy every step of the journey.</p>
       
       <div class="hero-cta-group fade-up delay-2">
-        <a href="#payment-link" class="pill-btn pill-light">
+        <a href="#intake-form" class="pill-btn pill-light">
           ✨ Plan Your Trip
         </a>
-        <p class="hero-microcopy">Start with a $150 concierge deposit</p>
+        <p class="hero-microcopy">Start with a $150 concierge deposit. By proceeding, you agree to our <a href="https://www.airtrottravels.com/refund-policy" style="text-decoration: underline;">Refund & Cancellation Policy</a>.</p>
       </div>
     </div>
     
@@ -1034,7 +1012,7 @@
     <div class="section-label fade-up">About Us</div>
     <h2 class="fade-up delay-1">Airtrot Travels connects the world through seamless travel experiences.</h2>
     <p class="fade-up delay-2">
-      Airtrot is a travel and tours company built on the belief that planning a trip should be as stress-free as the journey itself. We help individuals, families, and businesses navigate flights, visas, and full travel arrangements with clarity, care, and consistent support. For over ten years, we've worked quietly behind the scenes to make travel easier for our clients—whether it’s a simple ticket or a complete travel package. Our process is transparent, our advice honest, and our goal is always the same: to help you travel confidently, knowing you're in good hands. All personalized travel planning begins with a concierge deposit.
+      Airtrot is a travel and tours company built on the belief that planning a trip should be as stress-free as the journey itself. We help individuals, families, and businesses navigate flights, visas, and full travel arrangements with clarity, care, and consistent support. For over ten years, we've worked quietly behind the scenes to make travel easier for our clients—whether it’s a simple ticket or a complete travel package. Our process is transparent, our advice honest, and our goal is always the same: to help you travel confidently, knowing you're in good hands. All personalized travel planning begins with a $150 concierge deposit. $150 concierge fee applied toward booking. Subject to our <a href="https://www.airtrottravels.com/refund-policy">Refund & Cancellation Policy</a>.
     </p>
   </div>
 </section>
@@ -1057,7 +1035,8 @@
           <div class="accordion-content">
             We build custom itineraries tailored to your exact preferences. From flights and hotels to full daily schedules, we handle everything.
             <div class="service-ctas">
-              <a href="#payment-link" class="s-cta">✨ Start Planning My Trip</a>
+              <a href="#intake-form" class="s-cta">✨ Start Planning My Trip</a>
+              <span class="policy-microcopy">By proceeding, you agree to our <a href="https://www.airtrottravels.com/refund-policy">Refund & Cancellation Policy</a>.</span>
             </div>
           </div>
         </div>
@@ -1071,7 +1050,6 @@
             Explore our curated holiday packages for top destinations, perfectly designed for solo travelers, couples, and families.
             <div class="service-ctas">
               <a href="https://wc2026.airtrottravels.com" class="s-cta" target="_blank">🌍 Explore Travel Packages</a>
-              <a href="#payment-link" class="s-cta s-cta-outline">✨ Start Planning My Trip</a>
             </div>
           </div>
         </div>
@@ -1084,7 +1062,7 @@
           <div class="accordion-content">
             Coordinating a group? We manage flights, accommodations, and ground transport for family reunions, retreats, and large group trips.
             <div class="service-ctas">
-              <a href="#payment-link" class="s-cta">✈️ Plan My Group Trip</a>
+              <a href="#intake-form" class="s-cta">✈️ Plan My Group Trip</a>
             </div>
           </div>
         </div>
@@ -1097,7 +1075,7 @@
           <div class="accordion-content">
             Expert guidance through visa applications, document preparation, and entry requirements to make international travel seamless.
             <div class="service-ctas">
-              <a href="#payment-link" class="s-cta">🛂 Get Visa Support</a>
+              <a href="#intake-form" class="s-cta">🛂 Get Visa Support</a>
             </div>
           </div>
         </div>
@@ -1111,7 +1089,7 @@
             Streamlined booking solutions, itinerary management, and exclusive group rates designed for business professionals and corporate teams.
             <div class="service-ctas">
               <a href="mailto:hello@airtrottravels.com" class="s-cta">💼 Request Setup</a>
-              <a href="#payment-link" class="s-cta s-cta-outline">🗓️ Schedule Consultation</a>
+              <a href="https://calendly.com/airtrottravels" target="_blank" class="s-cta s-cta-outline">🗓️ Schedule Consultation</a>
             </div>
           </div>
         </div>
@@ -1124,7 +1102,7 @@
           <div class="accordion-content">
             Destination weddings, honeymoons, and premium luxury escapes. We plan your special moments with ultimate care and exclusivity.
             <div class="service-ctas">
-              <a href="#payment-link" class="s-cta">🥂 Plan My Experience</a>
+              <a href="#intake-form" class="s-cta">🥂 Plan My Experience</a>
             </div>
           </div>
         </div>
@@ -1148,7 +1126,7 @@
       <div class="process-step">
         <div class="step-num">1</div>
         <h4>Pay concierge deposit</h4>
-        <p>Begin your personalized travel planning by paying the initial $150 concierge deposit.</p>
+        <p>Begin your personalized travel planning by paying the initial $150 concierge deposit. $150 concierge fee applied toward booking. Subject to our <a href="https://www.airtrottravels.com/refund-policy" style="text-decoration: underline;">Refund & Cancellation Policy</a>.</p>
       </div>
       <div class="process-step">
         <div class="step-num">2</div>
@@ -1174,12 +1152,12 @@
       <div class="concierge-left">
         <h3>Your Personal Concierge Service</h3>
         <p>Airtrot Travels provides personalized travel planning and concierge services tailored to each client's preferences, destination, and budget. To begin, clients pay a concierge deposit which covers itinerary design, research, and planning services.</p>
-        <p style="font-weight: 500; color: var(--black);">* The deposit is applied toward the final cost of the trip when bookings are confirmed.</p>
+        <p class="fine-print">* The $150 concierge fee is applied toward the final cost of the trip when bookings are confirmed. Subject to our <a href="https://www.airtrottravels.com/refund-policy" style="text-decoration: underline; color: var(--accent);">Refund & Cancellation Policy</a>.</p>
       </div>
       
-      <!-- EXCLUSIVE AMEX "BLACK CARD" STYLED CTA -->
+      <!-- EXCLUSIVE AMEX "BLACK CARD" STYLED BOX & CTA -->
       <div class="concierge-right-wrapper">
-        <a href="#payment-link" class="black-card-container">
+        <div class="black-card-container">
           <div class="black-card">
             
             <div class="card-border-ring"></div>
@@ -1223,14 +1201,14 @@
                 </div>
               </div>
             </div>
-
-            <!-- Hover CTA overlay -->
-            <div class="card-cta-overlay">
-              <div class="card-cta-pill">✨ Tap to Start Planning</div>
-            </div>
-
           </div>
-        </a>
+        </div>
+
+        <!-- NEW PERMANENT CTA BUTTON -->
+        <div class="concierge-cta-area">
+          <a href="#intake-form" class="pill-btn pill-dark cta-primary-btn">✨ Start Planning Now</a>
+          <span class="concierge-urgency">Required to begin personalized travel planning.</span>
+        </div>
 
         <!-- SECURE PAYMENT TRUST LOGOS -->
         <div class="secure-payment-trust">
@@ -1251,7 +1229,7 @@
   </div>
 </section>
 
-<!-- WORLD CUP 2026 PROMO SECTION -->
+<!-- WORLD Cup 2026 PROMO SECTION -->
 <section class="wc-promo" id="world-cup">
   <div class="container">
     <div class="wc-box fade-up">
@@ -1302,8 +1280,9 @@
     <p>Speak instantly with a travel agent for quick replies, general inquiries, or last-minute travel support before beginning your formal planning.</p>
     
     <div class="contact-methods">
-      <a href="#payment-link" class="pill-btn pill-dark">✨ Start Planning</a>
+      <a href="#intake-form" class="pill-btn pill-dark">✨ Start Planning</a>
     </div>
+    <span class="policy-microcopy" style="text-align: center; margin-bottom: 20px;">By proceeding, you agree to our <a href="https://www.airtrottravels.com/refund-policy">Refund & Cancellation Policy</a>.</span>
     
     <div class="secondary-contacts">
       <a href="tel:9727106742">📞 Call Us</a>
@@ -1323,6 +1302,7 @@
           <input type="email" name="email" class="subscribe-input" placeholder="Sign up for free" required>
           <button type="submit" class="pill-btn pill-light subscribe-btn">✉️ Subscribe</button>
         </form>
+        <p class="footer-agreement-text">By submitting a travel request or purchasing concierge services, you agree to Airtrot’s <a href="https://www.airtrottravels.com/terms-and-conditions">Terms & Conditions</a> and <a href="https://www.airtrottravels.com/refund-policy">Cancellation Policy</a>.</p>
       </div>
       
       <div class="footer-right">
@@ -1330,19 +1310,26 @@
           <h6>Contact</h6>
           <p>📞 (972)-710-6742</p>
           <p>📩 hello@airtrottravels.com</p>
-          <p>📍 Lagos + Texas</p>
+          <p>🌍 Global Travel Concierge • Dallas, TX & Lagos, Nigeria</p>
+        </div>
+        <div class="footer-col">
+          <h6>Socials</h6>
+          <a href="https://www.instagram.com/airtrot_travels/" target="_blank">Instagram</a>
+          <a href="https://x.com/airtrot" target="_blank">X (Twitter)</a>
+          <a href="https://www.threads.net/@airtrot_travels" target="_blank">Threads</a>
         </div>
         <div class="footer-col">
           <h6>Quick Links</h6>
-          <a href="#about">About Us</a>
-          <a href="#services">Our Services</a>
+          <a href="https://www.airtrottravels.com/#about">About Us</a>
+          <a href="https://www.airtrottravels.com/#services">Our Services</a>
           <a href="https://wc2026.airtrottravels.com" target="_blank">World Cup 2026</a>
         </div>
         <div class="footer-col">
           <h6>Legal</h6>
-          <a href="#">Terms & Conditions</a>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Refund Policy</a>
+          <a href="https://www.airtrottravels.com/terms-and-conditions">Terms & Conditions</a>
+          <a href="https://www.airtrottravels.com/privacy-policy">Privacy Policy</a>
+          <a href="https://www.airtrottravels.com/refund-policy">Refund Policy</a>
+          <a href="https://www.airtrottravels.com/disclaimer">Disclaimer</a>
         </div>
       </div>
     </div>
