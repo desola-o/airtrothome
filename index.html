@@ -408,10 +408,10 @@
   .section-pad { padding: 80px 0; } 
 
   /* ── ABOUT ── */
-  .about { background: var(--white); text-align: center; }
-  .about-inner { max-width: 680px; margin: 0 auto; }
-  .about h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 500; line-height: 1.2; letter-spacing: -1px; margin: 0 0 25px; }
-  .about p { font-size: 17px; color: var(--muted); line-height: 1.6; letter-spacing: -0.3px; margin-bottom: 20px; }
+  .about { background: var(--white); text-align: left; }
+  .about-inner { max-width: 900px; margin: 0; }
+  .about h2 { font-size: clamp(32px, 4vw, 48px); font-weight: 500; line-height: 1.2; letter-spacing: -1.4px; margin: 0 0 25px; }
+  .about p { font-size: 18px; color: var(--muted); line-height: 1.6; letter-spacing: -0.3px; margin: 0 0 20px 0; max-width: 900px; }
   .about p a { text-decoration: underline; transition: color 0.3s; }
   .about p a:hover { color: var(--black); }
 
@@ -529,7 +529,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 24px;
+    padding: clamp(16px, 5vw, 24px); /* Responsive padding */
     color: #fff;
     transform-style: preserve-3d;
     transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1);
@@ -570,7 +570,7 @@
 
   .card-border-ring {
     position: absolute;
-    inset: 12px;
+    inset: clamp(6px, 2vw, 12px);
     border: 1px solid rgba(255,255,255,0.15);
     border-radius: 8px;
     pointer-events: none;
@@ -580,8 +580,8 @@
   .card-top { text-align: center; position: relative; z-index: 2; }
   .card-brand {
     font-family: 'Instrument Serif', serif;
-    font-size: 22px;
-    letter-spacing: 3.5px;
+    font-size: clamp(16px, 5vw, 22px);
+    letter-spacing: clamp(2px, 1vw, 3.5px);
     color: rgba(255,255,255,0.85);
     text-transform: uppercase;
     text-shadow: 1px 1px 1px #000, -1px -1px 1px rgba(255,255,255,0.15);
@@ -597,7 +597,8 @@
   }
 
   .card-chip {
-    width: 44px; height: 32px;
+    width: clamp(32px, 10vw, 44px); 
+    height: clamp(24px, 7.5vw, 32px);
     background: linear-gradient(135deg, #e8ce8a 0%, #a4812f 50%, #e8ce8a 100%);
     border-radius: 5px; position: relative; overflow: hidden;
     box-shadow: inset 0 0 5px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.5);
@@ -609,37 +610,53 @@
   .chip-line.vertical.right { right: 30%; }
 
   .card-medallion {
-    width: 52px; height: 52px;
+    width: clamp(36px, 12vw, 52px); 
+    height: clamp(36px, 12vw, 52px);
     border: 1px solid rgba(255,255,255,0.25); border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     box-shadow: inset 0 0 15px rgba(0,0,0,0.6), 0 2px 4px rgba(0,0,0,0.4);
     background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(0,0,0,0.3) 100%);
   }
+  .card-medallion svg {
+    width: clamp(16px, 5vw, 26px);
+    height: clamp(16px, 5vw, 26px);
+  }
 
-  .contactless-icon { width: 24px; height: 24px; opacity: 0.5; transform: rotate(90deg); }
+  .contactless-icon { 
+    width: clamp(16px, 5vw, 24px); 
+    height: clamp(16px, 5vw, 24px); 
+    opacity: 0.5; transform: rotate(90deg); 
+  }
 
   .card-bottom {
-    position: relative; z-index: 2; display: flex; flex-direction: column; gap: 8px; padding: 0 4px;
+    position: relative; z-index: 2; display: flex; flex-direction: column; gap: 6px; padding: 0 4px;
   }
   .card-embossed-amount {
-    font-family: 'Courier New', Courier, monospace; font-size: 20px; font-weight: 600;
-    letter-spacing: 3px; color: #b0b0b0; 
+    font-family: 'Courier New', Courier, monospace; 
+    font-size: clamp(14px, 4.5vw, 20px); 
+    font-weight: 600;
+    letter-spacing: clamp(1px, 1vw, 3px); 
+    color: #b0b0b0; 
     text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.9), 1px 1px 1px rgba(255, 255, 255, 0.25);
   }
 
   .card-details-row { display: flex; justify-content: space-between; align-items: flex-end; }
   .card-name {
-    font-family: 'Courier New', Courier, monospace; font-size: 13px; letter-spacing: 2px;
+    font-family: 'Courier New', Courier, monospace; 
+    font-size: clamp(10px, 3vw, 13px); 
+    letter-spacing: clamp(1px, 0.5vw, 2px);
     color: #b0b0b0; text-transform: uppercase;
     text-shadow: -1px -1px 1px rgba(0,0,0,0.9), 1px 1px 1px rgba(255,255,255,0.25);
   }
 
   .card-member {
-    display: flex; align-items: center; gap: 6px; font-size: 8px; color: rgba(255,255,255,0.5);
+    display: flex; align-items: center; gap: 4px; 
+    font-size: clamp(7px, 2vw, 8px); color: rgba(255,255,255,0.5);
     text-transform: uppercase; letter-spacing: 1px; line-height: 1.1;
   }
   .member-year {
-    font-family: 'Courier New', Courier, monospace; font-size: 13px; color: #b0b0b0;
+    font-family: 'Courier New', Courier, monospace; 
+    font-size: clamp(10px, 3vw, 13px); color: #b0b0b0;
     text-shadow: -1px -1px 1px rgba(0,0,0,0.9), 1px 1px 1px rgba(255,255,255,0.25);
   }
 
@@ -1008,12 +1025,14 @@
 
 <!-- ABOUT -->
 <section class="about section-pad" id="about">
-  <div class="container about-inner">
-    <div class="section-label fade-up">About Us</div>
-    <h2 class="fade-up delay-1">Airtrot Travels connects the world through seamless travel experiences.</h2>
-    <p class="fade-up delay-2">
-      Airtrot is a travel and tours company built on the belief that planning a trip should be as stress-free as the journey itself. We help individuals, families, and businesses navigate flights, visas, and full travel arrangements with clarity, care, and consistent support. For over ten years, we've worked quietly behind the scenes to make travel easier for our clients—whether it’s a simple ticket or a complete travel package. Our process is transparent, our advice honest, and our goal is always the same: to help you travel confidently, knowing you're in good hands. All personalized travel planning begins with a $150 concierge deposit. $150 concierge fee applied toward booking. Subject to our <a href="https://www.airtrottravels.com/refund-policy">Refund & Cancellation Policy</a>.
-    </p>
+  <div class="container">
+    <div class="about-inner">
+      <div class="section-label fade-up">About Us</div>
+      <h2 class="fade-up delay-1">Airtrot Travels connects the world through seamless travel experiences.</h2>
+      <p class="fade-up delay-2">
+        Airtrot is a travel and tours company built on the belief that planning a trip should be as stress-free as the journey itself. We help individuals, families, and businesses navigate flights, visas, and full travel arrangements with clarity, care, and consistent support. For over ten years, we've worked quietly behind the scenes to make travel easier for our clients—whether it’s a simple ticket or a complete travel package. Our process is transparent, our advice honest, and our goal is always the same: to help you travel confidently, knowing you're in good hands. All personalized travel planning begins with a $150 concierge deposit, which is applied directly toward your final booking.
+      </p>
+    </div>
   </div>
 </section>
 
@@ -1036,7 +1055,6 @@
             We build custom itineraries tailored to your exact preferences. From flights and hotels to full daily schedules, we handle everything.
             <div class="service-ctas">
               <a href="#intake-form" class="s-cta">✨ Start Planning My Trip</a>
-              <span class="policy-microcopy">By proceeding, you agree to our <a href="https://www.airtrottravels.com/refund-policy">Refund & Cancellation Policy</a>.</span>
             </div>
           </div>
         </div>
@@ -1126,7 +1144,7 @@
       <div class="process-step">
         <div class="step-num">1</div>
         <h4>Pay concierge deposit</h4>
-        <p>Begin your personalized travel planning by paying the initial $150 concierge deposit. $150 concierge fee applied toward booking. Subject to our <a href="https://www.airtrottravels.com/refund-policy" style="text-decoration: underline;">Refund & Cancellation Policy</a>.</p>
+        <p>Begin your personalized travel planning by paying the initial $150 concierge deposit.</p>
       </div>
       <div class="process-step">
         <div class="step-num">2</div>
@@ -1175,7 +1193,7 @@
 
               <!-- Sleek Globe/Medallion replacing Centurion -->
               <div class="card-medallion">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
                   <circle cx="12" cy="12" r="10"></circle>
                   <line x1="2" y1="12" x2="22" y2="12"></line>
                   <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
@@ -1282,7 +1300,6 @@
     <div class="contact-methods">
       <a href="#intake-form" class="pill-btn pill-dark">✨ Start Planning</a>
     </div>
-    <span class="policy-microcopy" style="text-align: center; margin-bottom: 20px;">By proceeding, you agree to our <a href="https://www.airtrottravels.com/refund-policy">Refund & Cancellation Policy</a>.</span>
     
     <div class="secondary-contacts">
       <a href="tel:9727106742">📞 Call Us</a>
