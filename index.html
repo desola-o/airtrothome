@@ -32,7 +32,7 @@
   a { text-decoration: none; color: inherit; }
 
   /* ── UNIVERSAL BUTTON HOVER STATES ── */
-  .nav-cta:hover, .pill-btn:hover, .s-cta:hover {
+  .nav-cta:hover, .pill-btn:hover, .s-cta:hover, .cta-primary-btn:hover {
     background: var(--accent) !important;
     color: var(--white) !important;
     border-color: var(--accent) !important;
@@ -219,24 +219,6 @@
   .pill-light { background: var(--white); color: var(--black); border-color: var(--white); }
   .pill-outline { background: transparent; color: var(--black); border-color: var(--black); }
 
-  /* ── POLICY MICROCOPY ── */
-  .policy-microcopy {
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 8px;
-    display: block;
-    width: 100%;
-    line-height: 1.4;
-  }
-  .policy-microcopy a {
-    text-decoration: underline;
-    color: inherit;
-    transition: color 0.3s;
-  }
-  .policy-microcopy a:hover {
-    color: var(--black);
-  }
-
   /* ── SHIMMERING EFFECT ── */
   @keyframes shimmer {
     0% { background-position: 200% center; }
@@ -267,6 +249,42 @@
     background: linear-gradient(110deg, rgba(255,255,255,0.1) 30%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.1) 70%);
     background-size: 200% 100%;
     border-color: rgba(255,255,255,0.15);
+  }
+
+  /* ── MARQUEE STYLES (SHARED) ── */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: scrollMarquee 45s linear infinite;
+  }
+  .marquee-track.reverse {
+    animation: scrollMarqueeReverse 45s linear infinite;
+  }
+  .marquee-item {
+    font-size: 18px;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.5;
+    letter-spacing: -0.3px;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+  }
+  .marquee-flag {
+    width: 24px;
+    height: 16px;
+    object-fit: cover;
+    border-radius: 2px;
+    box-shadow: 0 0 2px rgba(0,0,0,0.2);
+  }
+  @keyframes scrollMarquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes scrollMarqueeReverse {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
   }
 
   /* ── HERO ── */
@@ -381,26 +399,6 @@
     display: flex;
     overflow: hidden;
   }
-  .marquee-track {
-    display: flex;
-    width: max-content;
-    animation: scrollMarquee 45s linear infinite;
-  }
-  .marquee-item {
-    font-size: 18px;
-    color: rgba(255,255,255,0.9);
-    line-height: 1.5;
-    letter-spacing: -0.3px;
-    padding: 0 40px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    white-space: nowrap;
-  }
-  @keyframes scrollMarquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
 
   /* ── SECTIONS COMMON ── */
   section { width: 100%; }
@@ -411,9 +409,22 @@
   .about { background: var(--white); text-align: left; }
   .about-inner { max-width: 900px; margin: 0; }
   .about h2 { font-size: clamp(32px, 4vw, 48px); font-weight: 500; line-height: 1.2; letter-spacing: -1.4px; margin: 0 0 25px; }
-  .about p { font-size: 18px; color: var(--muted); line-height: 1.6; letter-spacing: -0.3px; margin: 0 0 20px 0; max-width: 900px; }
+  .about p { font-size: 18px; color: var(--muted); line-height: 1.6; letter-spacing: -0.3px; margin: 0 0 20px 0; max-width: 720px; }
   .about p a { text-decoration: underline; transition: color 0.3s; }
   .about p a:hover { color: var(--black); }
+
+  /* ── DIVIDER PAGE MARQUEE ── */
+  .page-marquee {
+    width: 100%;
+    background: var(--white);
+    padding: 18px 0;
+    display: flex;
+    overflow: hidden;
+    border: none;
+  }
+  .page-marquee .marquee-item {
+    color: var(--muted);
+  }
 
   /* ── PROCESS & TRUST ── */
   .process { background: var(--cream); position: relative; }
@@ -457,42 +468,48 @@
 
   /* ── CONCIERGE BOX LAYOUT ── */
   .concierge-box {
-    background: var(--white); 
-    border: 1px solid var(--beige); 
-    border-radius: 24px;
-    padding: 60px; 
     display: flex; 
     align-items: center; 
     justify-content: space-between;
     gap: 60px; 
-    box-shadow: 0 20px 40px rgba(0,0,0,0.03);
   }
   .concierge-left { 
     flex: 1; 
-    max-width: 540px;
+    max-width: 600px;
+    background: #f1f2eb;
+    padding: 60px;
+    border-radius: 24px;
   }
   .concierge-left h3 { 
     font-size: clamp(28px, 4vw, 36px); 
     font-weight: 600; 
-    margin-bottom: 18px; 
+    margin-bottom: 20px; 
     letter-spacing: -0.8px; 
     line-height: 1.2;
+    color: var(--black);
   }
-  .concierge-left p { 
+  .concierge-left p.desc { 
     font-size: 17px; 
-    color: var(--muted); 
+    color: var(--black); 
     line-height: 1.6; 
-    margin-bottom: 24px; 
+    margin-bottom: 30px; 
   }
   .concierge-left .fine-print {
     font-size: 14.5px;
     font-weight: 500; 
     color: var(--black);
     line-height: 1.5;
-    background: var(--sage);
+    background: #e2e4d8; /* slightly darker sage */
     padding: 16px 20px;
     border-radius: 12px;
     margin-bottom: 0;
+  }
+  .concierge-left .fine-print a {
+    text-decoration: underline;
+    transition: opacity 0.3s;
+  }
+  .concierge-left .fine-print a:hover {
+    opacity: 0.7;
   }
 
   .concierge-right-wrapper {
@@ -501,7 +518,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 380px;
+    max-width: 420px;
   }
 
   /* SKEUOMORPHIC AMEX BLACK CARD */
@@ -666,20 +683,29 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
   }
   .cta-primary-btn {
     width: 100%;
     font-size: 16px;
-    padding: 18px 24px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    font-weight: 600;
+    padding: 16px 24px;
+    background: #000;
+    color: #fff;
+    border-radius: 100px;
     border: none;
     margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
   }
   .concierge-urgency {
     font-size: 13.5px;
-    color: var(--accent);
-    font-weight: 600;
+    color: var(--black);
+    font-weight: 500;
     letter-spacing: -0.2px;
     text-align: center;
     line-height: 1.4;
@@ -845,18 +871,12 @@
   @media (max-width: 1024px) {
     .concierge-box {
       flex-direction: column;
-      text-align: center;
-      padding: 50px 30px;
+      gap: 50px;
     }
     .concierge-left {
       max-width: 100%;
-      align-items: center;
-    }
-    .concierge-left h3 {
-      font-size: clamp(28px, 5vw, 36px);
-    }
-    .concierge-left .fine-print {
-      text-align: center;
+      padding: 50px 40px;
+      text-align: left;
     }
     .footer-right { grid-template-columns: repeat(2, 1fr); gap: 40px; }
   }
@@ -877,6 +897,10 @@
     }
   }
 
+  @media (max-width: 768px) {
+    .about-inner { margin-bottom: 40px; }
+  }
+
   @media (max-width: 600px) {
     .section-pad { padding: 60px 0; } 
     .cta-contact { padding: 60px 0; }
@@ -884,6 +908,9 @@
     .hero-content { flex-direction: column; align-items: flex-start; gap: 40px; }
     .hero-badges { display: none; } 
     
+    .concierge-left {
+      padding: 40px 25px;
+    }
     .concierge-right-wrapper {
       min-width: 100%;
       width: 100%;
@@ -1036,6 +1063,38 @@
   </div>
 </section>
 
+<!-- COUNTRIES SCROLLING MARQUEE -->
+<div class="page-marquee fade-up">
+  <div class="marquee-track reverse">
+    <!-- Set 1 -->
+    <span class="marquee-item"><img src="https://flagcdn.com/us.svg" alt="United States Flag" class="marquee-flag"> United States</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/gb.svg" alt="United Kingdom Flag" class="marquee-flag"> United Kingdom</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/fr.svg" alt="France Flag" class="marquee-flag"> France</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/it.svg" alt="Italy Flag" class="marquee-flag"> Italy</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/jp.svg" alt="Japan Flag" class="marquee-flag"> Japan</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/ae.svg" alt="United Arab Emirates Flag" class="marquee-flag"> United Arab Emirates</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/mv.svg" alt="Maldives Flag" class="marquee-flag"> Maldives</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/ch.svg" alt="Switzerland Flag" class="marquee-flag"> Switzerland</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/za.svg" alt="South Africa Flag" class="marquee-flag"> South Africa</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/br.svg" alt="Brazil Flag" class="marquee-flag"> Brazil</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/au.svg" alt="Australia Flag" class="marquee-flag"> Australia</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/gr.svg" alt="Greece Flag" class="marquee-flag"> Greece</span>
+    <!-- Set 2 -->
+    <span class="marquee-item"><img src="https://flagcdn.com/us.svg" alt="United States Flag" class="marquee-flag"> United States</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/gb.svg" alt="United Kingdom Flag" class="marquee-flag"> United Kingdom</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/fr.svg" alt="France Flag" class="marquee-flag"> France</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/it.svg" alt="Italy Flag" class="marquee-flag"> Italy</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/jp.svg" alt="Japan Flag" class="marquee-flag"> Japan</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/ae.svg" alt="United Arab Emirates Flag" class="marquee-flag"> United Arab Emirates</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/mv.svg" alt="Maldives Flag" class="marquee-flag"> Maldives</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/ch.svg" alt="Switzerland Flag" class="marquee-flag"> Switzerland</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/za.svg" alt="South Africa Flag" class="marquee-flag"> South Africa</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/br.svg" alt="Brazil Flag" class="marquee-flag"> Brazil</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/au.svg" alt="Australia Flag" class="marquee-flag"> Australia</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/gr.svg" alt="Greece Flag" class="marquee-flag"> Greece</span>
+  </div>
+</div>
+
 <!-- SERVICES (FUNNEL / ACCORDION) -->
 <section class="services section-pad" id="services">
   <div class="container services-inner">
@@ -1167,10 +1226,11 @@
 
     <!-- CONCIERGE DEPOSIT BOX -->
     <div class="concierge-box fade-up">
+      
       <div class="concierge-left">
         <h3>Your Personal Concierge Service</h3>
-        <p>Airtrot Travels provides personalized travel planning and concierge services tailored to each client's preferences, destination, and budget. To begin, clients pay a concierge deposit which covers itinerary design, research, and planning services.</p>
-        <p class="fine-print">* The $150 concierge fee is applied toward the final cost of the trip when bookings are confirmed. Subject to our <a href="https://www.airtrottravels.com/refund-policy" style="text-decoration: underline; color: var(--accent);">Refund & Cancellation Policy</a>.</p>
+        <p class="desc">Airtrot Travels provides personalized travel planning and concierge services tailored to each client's preferences, destination, and budget. To begin, clients pay a concierge deposit which covers itinerary design, research, and planning services.</p>
+        <p class="fine-print">* The $150 concierge fee is applied toward the final cost of the trip when bookings are confirmed. Subject to our <a href="https://www.airtrottravels.com/refund-policy">Refund & Cancellation Policy</a>.</p>
       </div>
       
       <!-- EXCLUSIVE AMEX "BLACK CARD" STYLED BOX & CTA -->
@@ -1224,7 +1284,7 @@
 
         <!-- NEW PERMANENT CTA BUTTON -->
         <div class="concierge-cta-area">
-          <a href="#intake-form" class="pill-btn pill-dark cta-primary-btn">✨ Start Planning Now</a>
+          <a href="#intake-form" class="cta-primary-btn">✨ Start Planning Now</a>
           <span class="concierge-urgency">Required to begin personalized travel planning.</span>
         </div>
 
