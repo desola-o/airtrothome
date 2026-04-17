@@ -206,6 +206,10 @@
   .subscribe-input { flex: 1; height: 52px; min-height: 52px; padding: 0 24px; border: 1px solid #333; border-radius: 100px; background: transparent; color: var(--white); outline: none; -webkit-appearance: none; box-sizing: border-box; }
   .subscribe-btn { height: 52px; min-height: 52px; margin: 0; box-sizing: border-box; white-space: nowrap; }
 
+  .footer-agreement-text { font-size: 13px; color: #888; margin-top: 16px; max-width: 400px; line-height: 1.5; }
+  .footer-agreement-text a { color: #ccc; text-decoration: underline; text-underline-offset: 2px; transition: color 0.3s; }
+  .footer-agreement-text a:hover { color: var(--white); }
+
   /* 4 columns for Socials */
   .footer-right { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 30px; }
   .footer-col h6 { font-size: 13px; font-weight: 600; color: #888; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 1px; }
@@ -369,6 +373,10 @@
     </ul>
     <p>Airtrot is not liable for issues arising from incorrect or incomplete information provided by the client.</p>
 
+    <h3>Travel Insurance</h3>
+    <p>Airtrot offers travel insurance options in connection with many bookings. Clients are advised to review and consider coverage for trip cancellations, interruptions, medical emergencies, and other travel-related risks.</p>
+    <p>If travel insurance is declined, the client assumes full responsibility for any financial losses resulting from cancellations, delays, medical needs, or other unforeseen circumstances not covered by suppliers.</p>
+
     <h3>Travel Risks & Liability</h3>
     <p>Travel involves inherent risks, including but not limited to:</p>
     <ul>
@@ -415,6 +423,7 @@
           <input type="email" name="email" class="subscribe-input" placeholder="Sign up for free" required>
           <button type="submit" class="pill-btn pill-light subscribe-btn">✉️ Subscribe</button>
         </form>
+        <p class="footer-agreement-text">By submitting a travel request or purchasing concierge services, you agree to Airtrot’s <a href="https://www.airtrottravels.com/terms-and-conditions">Terms & Conditions</a> and <a href="https://www.airtrottravels.com/refund-policy">Cancellation Policy</a>.</p>
       </div>
       
       <div class="footer-right">
@@ -441,6 +450,7 @@
           <a href="https://www.airtrottravels.com/terms-and-conditions">Terms & Conditions</a>
           <a href="https://www.airtrottravels.com/privacy-policy">Privacy Policy</a>
           <a href="https://www.airtrottravels.com/refund-policy">Refund Policy</a>
+          <a href="https://www.airtrottravels.com/disclaimer">Disclaimer</a>
         </div>
       </div>
     </div>
