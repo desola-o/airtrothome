@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Airtrot Travels — Your Personal Travel Assistant</title>
+<meta name="description" content="Airtrot Travels provides seamless, concierge-led travel planning with curated experiences, flight and accommodation curation, and stress-free coordination from start to finish.">
+<link rel="canonical" href="https://airtrottravels.com/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -46,7 +51,7 @@
     color: var(--white);
     text-align: center;
     padding: 10px 20px;
-    font-size: 14px;
+    font-size: 15px; /* Increased for SEO/Accessibility tap targets */
     font-weight: 500;
     letter-spacing: -0.2px;
     position: relative;
@@ -139,7 +144,7 @@
     border-radius: 100px;
     border: 1px solid var(--white);
     letter-spacing: -0.3px;
-    white-space: nowrap; /* Prevent 2 rows */
+    white-space: nowrap; 
     transition: all 0.3s ease;
   }
   nav.scrolled .nav-cta {
@@ -215,7 +220,7 @@
     transition: all 0.3s ease;
     border: 1px solid currentColor;
     justify-content: center;
-    white-space: nowrap; /* Forces text to stay on one row */
+    white-space: nowrap; 
   }
   .pill-dark { background: var(--black); color: var(--white); border-color: var(--black); }
   .pill-light { background: var(--white); color: var(--black); border-color: var(--white); }
@@ -223,7 +228,7 @@
 
   /* ── POLICY MICROCOPY ── */
   .policy-microcopy {
-    font-size: 12px;
+    font-size: 14px;
     color: var(--muted);
     margin-top: 8px;
     display: block;
@@ -363,7 +368,7 @@
     gap: 10px;
   }
   .hero-microcopy {
-    font-size: 14px;
+    font-size: 15px; /* Increased for SEO tap targets */
     color: rgba(255,255,255,0.8);
     font-weight: 500;
     letter-spacing: -0.2px;
@@ -520,11 +525,11 @@
     margin-bottom: 30px; 
   }
   .concierge-left .fine-print {
-    font-size: 14.5px;
+    font-size: 15px; /* Increased for SEO tap targets */
     font-weight: 500; 
     color: var(--black);
     line-height: 1.5;
-    background: #e2e4d8; /* slightly darker sage */
+    background: #e2e4d8; 
     padding: 16px 20px;
     border-radius: 12px;
     margin-bottom: 0;
@@ -564,7 +569,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: clamp(16px, 5vw, 24px); /* Responsive padding */
+    padding: clamp(16px, 5vw, 24px); 
     color: #fff;
     transform-style: preserve-3d;
     transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1);
@@ -719,10 +724,10 @@
     gap: 8px;
     cursor: pointer;
     transition: 0.3s ease;
-    white-space: nowrap; /* Forces text to stay on one row */
+    white-space: nowrap; 
   }
   .concierge-urgency {
-    font-size: 13.5px;
+    font-size: 15px; /* Increased for SEO tap targets */
     color: var(--black);
     font-weight: 500;
     letter-spacing: -0.2px;
@@ -776,7 +781,11 @@
     position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;
   }
   .wc-box-overlay {
-    position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.85) 100%); z-index: 1;
+    position: absolute; 
+    inset: 0; 
+    /* Darkened overlay gradient for higher text legibility */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.95) 100%); 
+    z-index: 1;
   }
   .wc-box h2, .wc-box p, .wc-box .pill-btn, .wc-box .section-label, .wc-box .wc-buttons { position: relative; z-index: 2; }
   .wc-box h2 { font-size: clamp(32px, 5vw, 48px); font-weight: 500; margin-bottom: 20px; letter-spacing: -1px; }
@@ -846,7 +855,7 @@
   .cta-contact h2 { font-size: clamp(36px, 5vw, 64px); font-weight: 500; letter-spacing: -1.5px; margin-bottom: 20px; }
   .cta-contact p { font-size: 18px; color: var(--muted); max-width: 500px; margin: 0 auto 30px; }
   .contact-methods { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 10px; }
-  .secondary-contacts { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; font-size: 15px; font-weight: 500; margin-top: 25px; }
+  .secondary-contacts { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; font-size: 16px; /* Increased for SEO */ font-weight: 500; margin-top: 25px; }
   .secondary-contacts a { color: var(--muted); transition: color 0.3s; }
   .secondary-contacts a:hover { color: var(--accent); }
 
@@ -919,7 +928,7 @@
     .footer-top { grid-template-columns: 1fr; }
     .wc-box { padding: 60px 25px; }
     
-    .nav-logo img { height: 100px; } /* Slightly scaled down tablet logo */
+    .nav-logo img { height: 100px; }
 
     nav.scrolled .hamburger-btn { color: var(--black); }
     nav.scrolled .nav-logo img {
@@ -933,19 +942,17 @@
   }
 
   @media (max-width: 600px) {
-    /* Prevent Logo & Title Overlap */
-    .nav-logo img { height: 75px; } /* Ensures the logo isn't massive */
+    .nav-logo img { height: 75px; }
     nav.scrolled .nav-logo img { height: 60px; }
     
     .hero-content { 
-      padding: 160px 20px 80px 20px; /* Top padding added as buffer to prevent push-up */
+      padding: 160px 20px 80px 20px; 
       flex-direction: column; 
       align-items: flex-start; 
       justify-content: flex-end;
       gap: 30px; 
     }
     
-    /* Ensure long button texts fit horizontally on tiny 320px screens */
     .container { padding: 0 20px; }
     .nav-inner { padding: 0 20px; }
     .pill-btn, .cta-primary-btn { 
@@ -1047,7 +1054,6 @@
 <!-- HERO -->
 <section class="hero">
   <video class="hero-video" autoplay muted loop playsinline poster="https://framerusercontent.com/images/MIwzfuQXoptDm9j5Cl0rLpyjAU.png?width=1908&height=1042">
-    <!-- Placeholder video -->
     <source src="https://cdn.prod.website-files.com/6825e608489aafe8d3cde098%2F682c50aeb56e7ce2804921fa_4069480-uhd_3840_2160_25fps%20%281%29%20%28online-video-cuttercom%29%20%281%29-transcode.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
@@ -1061,7 +1067,7 @@
           ✨ Begin Your Concierge Experience
         </a>
         <p class="hero-microcopy">Start with a $150 concierge deposit (applied to your trip)</p>
-        <a href="/concierge-services" class="hero-text-link">Explore Concierge Services</a>
+        <a href="/concierge-services/" class="hero-text-link">Explore Concierge Services</a>
       </div>
     </div>
     
@@ -1117,31 +1123,31 @@
 <div class="page-marquee fade-up">
   <div class="marquee-track reverse">
     <!-- Set 1 -->
-    <span class="marquee-item"><img src="https://flagcdn.com/us.svg" alt="United States Flag" class="marquee-flag"> United States</span>
-    <span class="marquee-item"><img src="https://flagcdn.com/gb.svg" alt="United Kingdom Flag" class="marquee-flag"> United Kingdom</span>
-    <span class="marquee-item"><img src="https://flagcdn.com/fr.svg" alt="France Flag" class="marquee-flag"> France</span>
-    <span class="marquee-item"><img src="https://flagcdn.com/it.svg" alt="Italy Flag" class="marquee-flag"> Italy</span>
-    <span class="marquee-item"><img src="https://flagcdn.com/jp.svg" alt="Japan Flag" class="marquee-flag"> Japan</span>
-    <span class="marquee-item"><img src="https://flagcdn.com/ae.svg" alt="United Arab Emirates Flag" class="marquee-flag"> United Arab Emirates</span>
-    <span class="marquee-item"><img src="https://flagcdn.com/mv.svg" alt="Maldives Flag" class="marquee-flag"> Maldives</span>
-    <span class="marquee-item"><img src="https://flagcdn.com/ch.svg" alt="Switzerland Flag" class="marquee-flag"> Switzerland</span>
-    <span class="marquee-item"><img src="https://flagcdn.com/za.svg" alt="South Africa Flag" class="marquee-flag"> South Africa</span>
-    <span class="marquee-item"><img src="https://flagcdn.com/br.svg" alt="Brazil Flag" class="marquee-flag"> Brazil</span>
-    <span class="marquee-item"><img src="https://flagcdn.com/au.svg" alt="Australia Flag" class="marquee-flag"> Australia</span>
-    <span class="marquee-item"><img src="https://flagcdn.com/gr.svg" alt="Greece Flag" class="marquee-flag"> Greece</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/us.svg" alt="United States Flag" class="marquee-flag" loading="lazy" decoding="async"> United States</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/gb.svg" alt="United Kingdom Flag" class="marquee-flag" loading="lazy" decoding="async"> United Kingdom</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/fr.svg" alt="France Flag" class="marquee-flag" loading="lazy" decoding="async"> France</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/it.svg" alt="Italy Flag" class="marquee-flag" loading="lazy" decoding="async"> Italy</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/jp.svg" alt="Japan Flag" class="marquee-flag" loading="lazy" decoding="async"> Japan</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/ae.svg" alt="United Arab Emirates Flag" class="marquee-flag" loading="lazy" decoding="async"> United Arab Emirates</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/mv.svg" alt="Maldives Flag" class="marquee-flag" loading="lazy" decoding="async"> Maldives</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/ch.svg" alt="Switzerland Flag" class="marquee-flag" loading="lazy" decoding="async"> Switzerland</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/za.svg" alt="South Africa Flag" class="marquee-flag" loading="lazy" decoding="async"> South Africa</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/br.svg" alt="Brazil Flag" class="marquee-flag" loading="lazy" decoding="async"> Brazil</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/au.svg" alt="Australia Flag" class="marquee-flag" loading="lazy" decoding="async"> Australia</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/gr.svg" alt="Greece Flag" class="marquee-flag" loading="lazy" decoding="async"> Greece</span>
     <!-- Set 2 -->
-    <span class="marquee-item"><img src="https://flagcdn.com/us.svg" alt="United States Flag" class="marquee-flag"> United States</span>
-    <span class="marquee-item"><img src="https://flagcdn.com/gb.svg" alt="United Kingdom Flag" class="marquee-flag"> United Kingdom</span>
-    <span class="marquee-item"><img src="https://flagcdn.com/fr.svg" alt="France Flag" class="marquee-flag"> France</span>
-    <span class="marquee-item"><img src="https://flagcdn.com/it.svg" alt="Italy Flag" class="marquee-flag"> Italy</span>
-    <span class="marquee-item"><img src="https://flagcdn.com/jp.svg" alt="Japan Flag" class="marquee-flag"> Japan</span>
-    <span class="marquee-item"><img src="https://flagcdn.com/ae.svg" alt="United Arab Emirates Flag" class="marquee-flag"> United Arab Emirates</span>
-    <span class="marquee-item"><img src="https://flagcdn.com/mv.svg" alt="Maldives Flag" class="marquee-flag"> Maldives</span>
-    <span class="marquee-item"><img src="https://flagcdn.com/ch.svg" alt="Switzerland Flag" class="marquee-flag"> Switzerland</span>
-    <span class="marquee-item"><img src="https://flagcdn.com/za.svg" alt="South Africa Flag" class="marquee-flag"> South Africa</span>
-    <span class="marquee-item"><img src="https://flagcdn.com/br.svg" alt="Brazil Flag" class="marquee-flag"> Brazil</span>
-    <span class="marquee-item"><img src="https://flagcdn.com/au.svg" alt="Australia Flag" class="marquee-flag"> Australia</span>
-    <span class="marquee-item"><img src="https://flagcdn.com/gr.svg" alt="Greece Flag" class="marquee-flag"> Greece</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/us.svg" alt="United States Flag" class="marquee-flag" loading="lazy" decoding="async"> United States</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/gb.svg" alt="United Kingdom Flag" class="marquee-flag" loading="lazy" decoding="async"> United Kingdom</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/fr.svg" alt="France Flag" class="marquee-flag" loading="lazy" decoding="async"> France</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/it.svg" alt="Italy Flag" class="marquee-flag" loading="lazy" decoding="async"> Italy</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/jp.svg" alt="Japan Flag" class="marquee-flag" loading="lazy" decoding="async"> Japan</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/ae.svg" alt="United Arab Emirates Flag" class="marquee-flag" loading="lazy" decoding="async"> United Arab Emirates</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/mv.svg" alt="Maldives Flag" class="marquee-flag" loading="lazy" decoding="async"> Maldives</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/ch.svg" alt="Switzerland Flag" class="marquee-flag" loading="lazy" decoding="async"> Switzerland</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/za.svg" alt="South Africa Flag" class="marquee-flag" loading="lazy" decoding="async"> South Africa</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/br.svg" alt="Brazil Flag" class="marquee-flag" loading="lazy" decoding="async"> Brazil</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/au.svg" alt="Australia Flag" class="marquee-flag" loading="lazy" decoding="async"> Australia</span>
+    <span class="marquee-item"><img src="https://flagcdn.com/gr.svg" alt="Greece Flag" class="marquee-flag" loading="lazy" decoding="async"> Greece</span>
   </div>
 </div>
 
@@ -1155,7 +1161,7 @@
       
       <div class="service-list fade-up delay-3">
         <!-- Service 1 -->
-        <div class="accordion-item active">
+        <div class="accordion-item">
           <button class="accordion-header">
             <div class="service-icon"></div> Flight & Accommodation Curation
             <span class="accordion-toggle">+</span>
@@ -1239,12 +1245,12 @@
       <!-- Services Global CTAs underneath bullets -->
       <div class="services-global-cta fade-up delay-3" style="margin-top: 30px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start;">
         <a href="#intake-form" class="pill-btn pill-dark">✨ Begin Your Concierge Experience</a>
-        <a href="/concierge-services" class="services-text-link">Explore Concierge Services</a>
+        <a href="/concierge-services/" class="services-text-link">Explore Concierge Services</a>
       </div>
     </div>
     
     <div class="services-img fade-up delay-2">
-      <img src="https://i.ibb.co/GQ2ctwJ8/jahanzeb-ahsan-KKo-Cyi-U-x-AU-unsplash.jpg" alt="Travel Planning Services">
+      <img src="https://i.ibb.co/GQ2ctwJ8/jahanzeb-ahsan-KKo-Cyi-U-x-AU-unsplash.jpg" alt="Travel Planning Services" loading="lazy" decoding="async">
     </div>
   </div>
 </section>
@@ -1353,9 +1359,9 @@
             Secure Payment
           </div>
           <div class="payment-logos-row">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" alt="Stripe">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" class="paypal-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg" alt="Apple Pay">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" alt="Stripe" loading="lazy" decoding="async">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" class="paypal-logo" loading="lazy" decoding="async">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg" alt="Apple Pay" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
@@ -1370,7 +1376,7 @@
   <div class="container">
     <div class="wc-box fade-up">
       <!-- BACKGROUND IMAGE HERE -->
-      <img class="wc-box-bg" src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=2000&q=80" alt="World Cup Football Stadium">
+      <img class="wc-box-bg" src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=2000&q=80" alt="World Cup Football Stadium" loading="lazy" decoding="async">
       <div class="wc-box-overlay"></div>
       
       <div class="section-label">Special Event</div>
@@ -1454,7 +1460,7 @@
         <div class="footer-col">
           <h6>Quick Links</h6>
           <a href="https://www.airtrottravels.com/#about">About Us</a>
-          <a href="/concierge-services">Concierge Services</a>
+          <a href="/concierge-services/">Concierge Services</a>
           <a href="https://wc2026.airtrottravels.com" target="_blank">World Cup 2026</a>
         </div>
         <div class="footer-col">
