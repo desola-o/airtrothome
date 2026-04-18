@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO TITLE AND META DESCRIPTION -->
+<title>Concierge Travel Services | Airtrot Travels</title>
+<meta name="description" content="Premium travel planning and concierge support for personalized trips, group travel, and luxury experiences. Choose from core planning to VIP white-glove itinerary management.">
+
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  /* ── SHARED BASE STYLES (From Main Site) ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --white: #ffffff;
+    --black: #000000;
+    --cream: #f6f7f1;
+    --sage: #e9ebe1;
+    --beige: #e3dfd4;
+    --muted: #585858;
+    --accent: #334789;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 16px;
+    color: var(--black);
+    background: var(--cream);
+    overflow-x: hidden;
+  }
+  img { display: block; max-width: 100%; object-fit: cover; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ── BUTTONS ── */
+  .nav-cta:hover, .pill-btn:hover, .s-cta:hover, .cta-primary-btn:hover {
+    background: var(--accent) !important;
+    color: var(--white) !important;
+    border-color: var(--accent) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(51, 71, 137, 0.2) !important;
+  }
+  .pill-btn {
+    display: inline-flex; align-items: center; gap: 8px; justify-content: center;
+    padding: 15px 28px; border-radius: 100px; font-size: 15px; font-weight: 500;
+    letter-spacing: -0.3px; cursor: pointer; transition: all 0.3s ease; border: 1px solid currentColor;
+  }
+  .pill-dark { background: var(--black); color: var(--white); border-color: var(--black); }
+  .pill-light { background: var(--white); color: var(--black); border-color: var(--white); }
+  .pill-outline { background: transparent; color: var(--black); border-color: var(--black); }
+
+  /* ── NAVIGATION ── */
+  nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 28px 0; background: transparent; transition: all 0.5s ease;
+  }
+  nav.scrolled {
+    position: fixed; padding: 10px 0; background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(24px) saturate(200%); -webkit-backdrop-filter: blur(24px) saturate(200%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  .nav-inner { max-width: 1320px; margin: 0 auto; padding: 0 30px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo img { height: 160px; width: auto; transition: 0.5s ease; filter: brightness(0) invert(1); }
+  nav.scrolled .nav-logo img { height: 95px; filter: brightness(0); }
+  
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.9); transition: 0.3s; }
+  nav.scrolled .nav-links a { color: var(--muted); }
+  .nav-links a:hover { color: var(--white); transform: translateY(-1px); }
+  nav.scrolled .nav-links a:hover { color: var(--black); }
+  
+  .nav-cta {
+    display: flex; align-items: center; gap: 8px; background: var(--white); color: var(--black);
+    font-size: 14px; font-weight: 500; padding: 10px 22px; border-radius: 100px;
+    border: 1px solid var(--white); transition: all 0.3s ease;
+  }
+  nav.scrolled .nav-cta { background: var(--black); color: var(--white); border-color: var(--black); }
+
+  .hamburger-btn { display: none; background: none; border: none; cursor: pointer; color: var(--white); padding: 10px; margin-right: -10px; }
+  nav.scrolled .hamburger-btn { color: var(--black); }
+  .hamburger-icon { width: 24px; height: 2px; background: currentColor; position: relative; }
+  .hamburger-icon::before, .hamburger-icon::after { content: ''; position: absolute; width: 24px; height: 2px; background: currentColor; left: 0; }
+  .hamburger-icon::before { top: -8px; }
+  .hamburger-icon::after { top: 8px; }
+
+  /* Mobile Menu */
+  .mobile-menu {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px); z-index: 1000; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: 0.4s ease;
+  }
+  .mobile-menu.active { opacity: 1; pointer-events: auto; }
+  .close-menu-btn { position: absolute; top: 25px; right: 25px; font-size: 44px; background: none; border: none; cursor: pointer; font-weight: 300; }
+  .mobile-nav-links { list-style: none; text-align: center; margin-bottom: 40px; padding: 0; }
+  .mobile-nav-links li { margin-bottom: 28px; }
+  .mobile-nav-links a { font-size: 28px; font-weight: 500; color: var(--black); transition: 0.3s; }
+
+  /* ── UTILITIES ── */
+  .container { max-width: 1320px; margin: 0 auto; padding: 0 30px; }
+  .section-pad { padding: 100px 0; }
+  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .delay-1 { transition-delay: 0.1s; }
+  .delay-2 { transition-delay: 0.2s; }
+  .delay-3 { transition-delay: 0.3s; }
+  
+  .section-label {
+    display: inline-flex; align-items: center; justify-content: center; padding: 6px 18px;
+    border-radius: 100px; font-size: 12px; font-weight: 700; color: var(--muted);
+    letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 20px;
+    background: linear-gradient(110deg, var(--sage) 30%, #ffffff 50%, var(--sage) 70%);
+    background-size: 200% 100%; animation: shimmer 3s infinite linear; border: 1px solid rgba(0,0,0,0.06);
+  }
+  @keyframes shimmer { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
+
+  .check-list { list-style: none; margin-top: 20px; }
+  .check-list li {
+    position: relative; padding-left: 28px; margin-bottom: 14px;
+    font-size: 16px; color: var(--muted); line-height: 1.5;
+  }
+  .check-list li::before {
+    content: '✦'; position: absolute; left: 0; top: 1px;
+    color: var(--black); font-size: 14px;
+  }
+
+  /* ── PAGE HERO ── */
+  .page-hero {
+    position: relative; background: var(--black); color: var(--white);
+    padding: 220px 0 120px; text-align: center; overflow: hidden;
+  }
+  .page-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 100%, rgba(51, 71, 137, 0.4) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .page-hero-inner { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+  .page-hero h1 { font-size: clamp(40px, 6vw, 72px); font-weight: 500; letter-spacing: -2px; margin-bottom: 24px; line-height: 1.1; }
+  .page-hero p { font-size: clamp(18px, 2.5vw, 22px); color: rgba(255,255,255,0.8); line-height: 1.5; margin-bottom: 40px; }
+  
+  /* ── INTRO / WHAT WE DO / WHO IT'S FOR ── */
+  .intro-text { font-size: 20px; color: var(--black); line-height: 1.6; max-width: 900px; margin-bottom: 30px; }
+  
+  .details-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 60px;
+    background: var(--white); padding: 60px; border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+  }
+  .details-col h3 { font-size: 28px; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 15px; }
+  .details-col p.desc { font-size: 16px; color: var(--muted); margin-bottom: 20px; line-height: 1.6; }
+
+  /* ── PRICING TIERS ── */
+  .pricing-section { padding-top: 40px; }
+  .pricing-section .section-label { background: var(--white); border-color: var(--beige); }
+  .pricing-header { text-align: center; margin-bottom: 60px; }
+  .pricing-header h2 { font-size: clamp(36px, 5vw, 54px); font-weight: 500; letter-spacing: -1.5px; }
+
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; align-items: stretch; }
+  
+  .tier-card {
+    background: var(--white); border-radius: 24px; padding: 40px;
+    display: flex; flex-direction: column; border: 1px solid var(--beige);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .tier-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
+  
+  .tier-name { font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; color: var(--muted); margin-bottom: 10px; }
+  .tier-title { font-size: 32px; font-weight: 600; letter-spacing: -1px; margin-bottom: 15px; }
+  .tier-desc { font-size: 15px; color: var(--muted); line-height: 1.5; margin-bottom: 30px; flex-grow: 0; min-height: 68px; }
+  .tier-price { font-size: 28px; font-weight: 500; margin-bottom: 30px; font-family: 'Instrument Serif', serif; padding-bottom: 30px; border-bottom: 1px solid var(--beige); }
+  
+  .tier-card .check-list { margin-top: 0; margin-bottom: 40px; flex-grow: 1; }
+  .tier-card .check-list li { font-size: 15px; }
+
+  /* VIP Dark Card Customization */
+  .tier-card.vip {
+    background: var(--black); color: var(--white); border-color: var(--black);
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); position: relative; overflow: hidden;
+  }
+  .tier-card.vip::before {
+    content: ''; position: absolute; top: 0; right: 0; width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .tier-card.vip .tier-name { color: #aaa; }
+  .tier-card.vip .tier-desc { color: rgba(255,255,255,0.7); }
+  .tier-card.vip .tier-price { border-color: rgba(255,255,255,0.15); color: #fff; }
+  .tier-card.vip .check-list li { color: rgba(255,255,255,0.8); }
+  .tier-card.vip .check-list li::before { color: var(--white); }
+
+  /* ── ACCORDION (ADDITIONAL SERVICES) ── */
+  .services-acc { background: var(--white); border-radius: 24px; padding: 60px; margin-top: 60px; border: 1px solid var(--beige); }
+  .services-acc h2 { font-size: 36px; font-weight: 500; letter-spacing: -1px; margin-bottom: 30px; }
+  
+  .accordion-item { border-bottom: 1px solid var(--beige); }
+  .accordion-header {
+    display: flex; align-items: center; gap: 16px; width: 100%; padding: 24px 0;
+    background: none; border: none; font-size: 18px; font-weight: 500; cursor: pointer;
+    text-align: left; font-family: inherit; color: var(--black); transition: color 0.3s;
+  }
+  .accordion-header:hover { color: var(--accent); }
+  .accordion-toggle { margin-left: auto; font-size: 24px; font-weight: 300; transition: transform 0.4s ease; color: var(--muted); }
+  .accordion-content {
+    max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.4s ease;
+    font-size: 16px; color: var(--muted); line-height: 1.6; opacity: 0;
+  }
+  .accordion-item.active .accordion-content { max-height: 500px; padding-bottom: 24px; opacity: 1; }
+  .accordion-item.active .accordion-toggle { transform: rotate(45deg); color: var(--accent); }
+  .accordion-item.active .accordion-header { color: var(--accent); }
+
+  /* ── TWO COL INFO ── */
+  .info-split {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 80px;
+  }
+  .info-box { background: var(--sage); padding: 50px; border-radius: 24px; }
+  .info-box h3 { font-size: 28px; margin-bottom: 20px; font-weight: 600; letter-spacing: -0.5px; }
+
+  /* ── CTA BOTTOM ── */
+  .cta-contact { background: var(--white); padding: 100px 0; text-align: center; border-top: 1px solid var(--beige); margin-top: 60px;}
+  .cta-contact h2 { font-size: clamp(36px, 5vw, 64px); font-weight: 500; letter-spacing: -1.5px; margin-bottom: 20px; }
+  .cta-contact p { font-size: 18px; color: var(--muted); max-width: 500px; margin: 0 auto 30px; line-height: 1.6;}
+
+  /* ── FOOTER ── */
+  footer { background: #0a0a0a; color: var(--white); padding: 60px 0 30px; } 
+  .footer-inner { max-width: 1320px; margin: 0 auto; padding: 0 30px; }
+  .footer-top { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; padding-bottom: 50px; border-bottom: 1px solid #222; margin-bottom: 30px; }
+  .footer-left h3 { font-size: clamp(28px, 3vw, 42px); font-weight: 500; letter-spacing: -1px; margin-bottom: 20px; max-width: 400px; }
+  .subscribe-form { display: flex; gap: 10px; max-width: 400px; flex-direction: row; align-items: center; }
+  .subscribe-input { flex: 1; height: 52px; padding: 0 24px; border: 1px solid #333; border-radius: 100px; background: transparent; color: var(--white); outline: none; }
+  .subscribe-btn { height: 52px; min-height: 52px; margin: 0; box-sizing: border-box; white-space: nowrap; border: none; }
+  .footer-agreement-text { font-size: 13px; color: #888; margin-top: 16px; max-width: 400px; line-height: 1.5; }
+  .footer-agreement-text a { color: #ccc; text-decoration: underline; }
+  .footer-right { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 30px; }
+  .footer-col h6 { font-size: 13px; font-weight: 600; color: #888; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 1px; }
+  .footer-col p, .footer-col a { display: block; font-size: 15px; color: #ccc; margin-bottom: 12px; transition: 0.3s; line-height: 1.5;}
+  .footer-col a:hover { color: var(--white); padding-left: 4px; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; color: #666; font-size: 14px; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .pricing-grid { grid-template-columns: 1fr; max-width: 600px; margin: 0 auto; }
+    .details-grid, .info-split { grid-template-columns: 1fr; gap: 40px; }
+    .footer-right { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  }
+  @media (max-width: 900px) {
+    .nav-links, .nav-cta { display: none; }
+    .hamburger-btn { display: block; }
+    .footer-top { grid-template-columns: 1fr; }
+    .nav-logo img { height: 120px; } 
+    nav.scrolled .nav-logo img { height: 75px; }
+  }
+  @media (max-width: 600px) {
+    .section-pad { padding: 60px 0; }
+    .page-hero { padding: 180px 0 80px; }
+    .details-grid { padding: 40px 25px; }
+    .services-acc, .info-box { padding: 40px 25px; }
+    .tier-card { padding: 30px; }
+    .footer-right { grid-template-columns: 1fr; gap: 30px; }
+    .subscribe-form { flex-direction: column; width: 100%; }
+    .subscribe-input, .subscribe-btn { width: 100%; }
+    .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <img src="https://i.ibb.co/35PvBjKF/Airtrot-Logo-500px.png" alt="Airtrot Travels">
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/#process">How It Works</a></li>
+    </ul>
+    <a href="https://wc2026.airtrottravels.com" class="nav-cta" target="_blank">
+      🏆 Attend the 2026 FIFA World Cup
+    </a>
+    <button class="hamburger-btn" id="open-menu" aria-label="Open mobile menu">
+      <div class="hamburger-icon"></div>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <button class="close-menu-btn" id="close-menu" aria-label="Close menu">&times;</button>
+  <ul class="mobile-nav-links">
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#process">How It Works</a></li>
+  </ul>
+  <a href="https://wc2026.airtrottravels.com" class="pill-btn pill-dark" target="_blank">🏆 Attend the 2026 FIFA World Cup</a>
+</div>
+
+<!-- HERO SECTION -->
+<header class="page-hero">
+  <div class="container page-hero-inner">
+    <div class="section-label fade-up" style="background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.2);">Premium Services</div>
+    <h1 class="fade-up delay-1">Concierge Travel Services</h1>
+    <p class="fade-up delay-2">Premium planning and support for travelers who want more than a booking link.</p>
+    <a href="#pricing" class="pill-btn pill-light fade-up delay-3">Begin Your Concierge Experience</a>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<section class="section-pad">
+  <div class="container">
+    
+    <!-- Intro Paragraphs -->
+    <div class="fade-up">
+      <p class="intro-text">At Airtrot, we support a wide range of travel needs, from personalized trip planning and group travel to visa support and luxury experiences. Our Concierge Services are designed for clients who want a more hands-on, elevated level of planning, coordination, and support before and during their trip.</p>
+      <p class="intro-text">Whether you need help sourcing the right flight and hotel, coordinating airport transfers, planning special experiences, or managing a high-touch itinerary, we help make the journey smoother from start to finish.</p>
+    </div>
+
+    <!-- Features Grid: What We Do & Who It's For -->
+    <div class="details-grid fade-up delay-1">
+      <div class="details-col">
+        <h3>What We Do</h3>
+        <p class="desc">Our concierge services go beyond basic booking support. Depending on the level of service you choose, we can assist with:</p>
+        <ul class="check-list">
+          <li>Personalized flight sourcing</li>
+          <li>Hotel and accommodation curation</li>
+          <li>Airport pickup and transfer coordination</li>
+          <li>Pre-arrival travel guidance</li>
+          <li>Visa and entry support guidance</li>
+          <li>Travel insurance coordination</li>
+          <li>Full itinerary planning</li>
+          <li>Restaurant, lounge, and event recommendations</li>
+          <li>Event access coordination</li>
+          <li>Group and celebration travel support</li>
+          <li>Local transportation planning</li>
+          <li>Booking and reservation management</li>
+          <li>Real-time travel support</li>
+          <li>Luxury and special request coordination</li>
+        </ul>
+        <p class="desc" style="margin-top: 20px; font-style: italic;">This is not one-size-fits-all travel planning. We tailor recommendations and coordination around your destination, preferences, travel style, and budget.</p>
+      </div>
+
+      <div class="details-col">
+        <h3>Who It’s For</h3>
+        <p class="desc">Airtrot Concierge is ideal for travelers looking for seamless execution:</p>
+        <ul class="check-list">
+          <li>Busy professionals who want someone else to manage the planning</li>
+          <li>Travelers who want expert guidance and curated recommendations</li>
+          <li>Couples, families, and solo travelers who want a smoother experience</li>
+          <li>Groups planning destination celebrations, milestone trips, or event travel</li>
+          <li>International travelers needing help with logistics and entry requirements</li>
+          <li>Corporate clients who need polished, efficient travel coordination</li>
+          <li>Luxury travelers who want premium support and custom experiences</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PRICING TIERS -->
+<section class="pricing-section section-pad" id="pricing">
+  <div class="container">
+    <div class="pricing-header fade-up">
+      <div class="section-label">Select Your Tier</div>
+      <h2>Choose Your Concierge Level</h2>
+    </div>
+
+    <div class="pricing-grid">
+      
+      <!-- Tier 1: Core -->
+      <div class="tier-card fade-up">
+        <div class="tier-name">Core Package</div>
+        <h3 class="tier-title">Base Concierge</h3>
+        <p class="tier-desc">This is your entry premium tier for travelers who want essential planning and support handled properly.</p>
+        <div class="tier-price">$150–$300 <span style="font-family: 'Instrument Sans', sans-serif; font-size: 14px; color: var(--muted); font-weight: 400;">/ trip fee</span></div>
+        
+        <ul class="check-list">
+          <li>Personalized flight sourcing</li>
+          <li>Hotel or accommodation curation</li>
+          <li>Private airport pickup coordination</li>
+          <li>Pre-arrival setup guidance & logistics</li>
+          <li>Dedicated support before & during travel</li>
+          <li>Travel insurance coordination</li>
+          <li>Basic visa and entry support guidance</li>
+        </ul>
+        <p style="font-size: 14px; font-weight: 500; margin-bottom: 20px;"><strong>Best for:</strong> Travelers who want reliable, elevated planning support without full itinerary management.</p>
+        <a href="#contact" class="pill-btn pill-outline" style="width: 100%; margin-top: auto;">Begin Experience</a>
+      </div>
+
+      <!-- Tier 2: Elevated -->
+      <div class="tier-card fade-up delay-1" style="background: var(--sage); border-color: var(--beige);">
+        <div class="tier-name">Mid-Tier Package</div>
+        <h3 class="tier-title">Elevated Concierge</h3>
+        <p class="tier-desc">More hands-on and lifestyle-driven for travelers who want planning support beyond flights and hotel.</p>
+        <div class="tier-price">$300–$600+ <span style="font-family: 'Instrument Sans', sans-serif; font-size: 14px; color: var(--muted); font-weight: 400;">/ trip fee</span></div>
+        
+        <p style="font-size: 14px; font-weight: 600; margin-bottom: 10px;">Includes Core, plus:</p>
+        <ul class="check-list">
+          <li>Full itinerary planning (dining, lounges, activities)</li>
+          <li>Event access coordination</li>
+          <li>Local transportation planning</li>
+          <li>Priority booking handling</li>
+          <li>Group trip coordination support</li>
+          <li>Special occasion planning support</li>
+        </ul>
+        <p style="font-size: 14px; font-weight: 500; margin-bottom: 20px;"><strong>Best for:</strong> Clients who want curated travel plus destination planning, logistics, and experience coordination.</p>
+        <a href="#contact" class="pill-btn pill-dark" style="width: 100%; margin-top: auto;">Begin Experience</a>
+      </div>
+
+      <!-- Tier 3: VIP -->
+      <div class="tier-card vip fade-up delay-2">
+        <div class="tier-name">Premium Package</div>
+        <h3 class="tier-title">VIP / White-Glove</h3>
+        <p class="tier-desc">Our most premium service for clients who want a seamless, managed experience with minimal effort on their end.</p>
+        <div class="tier-price">$750–$1,500+ <span style="font-family: 'Instrument Sans', sans-serif; font-size: 14px; color: rgba(255,255,255,0.5); font-weight: 400;">/ custom</span></div>
+        
+        <p style="font-size: 14px; font-weight: 600; margin-bottom: 10px;">Includes Elevated, plus:</p>
+        <ul class="check-list">
+          <li>End-to-end trip management</li>
+          <li>Airport meet and greet where available</li>
+          <li>Custom luxury experiences</li>
+          <li>Real-time on-call support during travel</li>
+          <li>Upgrades & special request handling</li>
+          <li>High-touch coordination for executive travel</li>
+        </ul>
+        <p style="font-size: 14px; font-weight: 500; margin-bottom: 20px; color: rgba(255,255,255,0.8);"><strong>Best for:</strong> Luxury travelers, high-value itineraries, special occasions, and clients who want every major detail handled.</p>
+        <a href="#contact" class="pill-btn pill-light" style="width: 100%; margin-top: auto;">Begin VIP Experience</a>
+      </div>
+
+    </div>
+    
+    <!-- Additional Services Accordion -->
+    <div class="services-acc fade-up">
+      <h2>Additional Services We Support</h2>
+      <p style="font-size: 16px; color: var(--muted); margin-bottom: 30px;">Depending on your trip needs, Airtrot may also assist with specialized planning:</p>
+      
+      <div class="accordion-item active">
+        <button class="accordion-header">
+          Visa & Entry Support <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-content">
+          Guidance on travel documentation requirements, entry logistics, and trip-readiness support.
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header">
+          Group & Event Travel <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-content">
+          Coordination for birthdays, destination celebrations, reunions, event weekends, and other group travel experiences.
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header">
+          Corporate Travel Solutions <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-content">
+          Travel planning support for business trips, executive travel, and professional itineraries requiring efficiency and polish.
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header">
+          Luxury & Special Occasions <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-content">
+          Curated support for honeymoons, milestone travel, premium leisure experiences, and high-touch itineraries.
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header" style="border:none;">
+          All-Inclusive Packages <span class="accordion-toggle">+</span>
+        </button>
+        <div class="accordion-content">
+          Help identifying and booking package-based travel options that align with your destination, style, and budget.
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Info Split -->
+    <div class="info-split fade-up delay-1">
+      <div class="info-box">
+        <h3>What You Get</h3>
+        <p style="margin-bottom: 15px; color: var(--muted); line-height: 1.5;">When you book Airtrot Concierge, you are paying for more than reservations. You are paying for:</p>
+        <ul class="check-list">
+          <li>Expert planning & better travel decisions</li>
+          <li>Significant time saved</li>
+          <li>Reduced stress & smoother logistics</li>
+          <li>More personalized, curated options</li>
+          <li>Trusted support before and during travel</li>
+          <li>A more elevated overall experience</li>
+        </ul>
+      </div>
+      
+      <div class="info-box" style="background: var(--white); border: 1px solid var(--beige);">
+        <h3>Pricing Notes</h3>
+        <p style="margin-bottom: 15px; color: var(--muted); line-height: 1.5;">Concierge fees depend on several dynamic factors regarding your trip:</p>
+        <ul class="check-list">
+          <li>Destination & Trip complexity</li>
+          <li>Number of travelers</li>
+          <li>Scope of planning required</li>
+          <li>Level of support required</li>
+          <li>Luxury or custom request volume</li>
+        </ul>
+        <p style="margin-top: 20px; font-size: 14px; font-weight: 500; line-height: 1.5; padding: 15px; background: var(--cream); border-radius: 12px;">* Multi-city itineraries, large group trips, event-based travel, and high-touch experiences may require a custom quote.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CALL TO ACTION -->
+<section class="cta-contact" id="contact">
+  <div class="container fade-up">
+    <div class="section-label">Why Airtrot?</div>
+    <h2>Ready to Start?</h2>
+    <p>We combine travel planning, coordination, and concierge support in a way that feels personal, polished, and practical. Tell us where you’re going, what kind of support you need, and how hands-on you want us to be.</p>
+    
+    <div style="margin-top: 30px;">
+      <a href="mailto:hello@airtrottravels.com" class="pill-btn pill-dark">✨ Begin Your Concierge Experience</a>
+    </div>
+    <p style="margin-top: 20px; font-size: 14px; color: var(--muted);">We’ll guide you to the right service level and help you move forward with clarity.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-left">
+        <h3>Get exclusive deals sent straight to your inbox</h3>
+        <form class="subscribe-form" id="newsletter-form">
+          <input type="email" name="email" class="subscribe-input" placeholder="Sign up for free" required>
+          <button type="submit" class="pill-btn pill-light subscribe-btn">✉️ Subscribe</button>
+        </form>
+        <p class="footer-agreement-text">By submitting a travel request or purchasing concierge services, you agree to Airtrot’s <a href="https://www.airtrottravels.com/terms-and-conditions">Terms & Conditions</a> and <a href="https://www.airtrottravels.com/refund-policy">Cancellation Policy</a>.</p>
+      </div>
+      
+      <div class="footer-right">
+        <div class="footer-col">
+          <h6>Contact</h6>
+          <p>📞 (972)-710-6742</p>
+          <p>📩 hello@airtrottravels.com</p>
+          <p>🌍 Global Travel Concierge • Dallas, TX & Lagos, Nigeria</p>
+        </div>
+        <div class="footer-col">
+          <h6>Socials</h6>
+          <a href="https://www.instagram.com/airtrot_travels/" target="_blank">Instagram</a>
+          <a href="https://x.com/airtrot" target="_blank">X (Twitter)</a>
+          <a href="https://www.threads.net/@airtrot_travels" target="_blank">Threads</a>
+        </div>
+        <div class="footer-col">
+          <h6>Quick Links</h6>
+          <a href="/#about">About Us</a>
+          <a href="/#services">Our Services</a>
+          <a href="https://wc2026.airtrottravels.com" target="_blank">World Cup 2026</a>
+        </div>
+        <div class="footer-col">
+          <h6>Legal</h6>
+          <a href="https://www.airtrottravels.com/terms-and-conditions">Terms & Conditions</a>
+          <a href="https://www.airtrottravels.com/privacy-policy">Privacy Policy</a>
+          <a href="https://www.airtrottravels.com/refund-policy">Refund Policy</a>
+          <a href="https://www.airtrottravels.com/disclaimer">Disclaimer</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div>© Airtrot Travels. All Rights Reserved.</div>
+      <div>Web Design by <a href="#" target="_blank">GrowthMonkey</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile Menu Logic
+  const mobileMenu = document.getElementById('mobile-menu');
+  const openMenuBtn = document.getElementById('open-menu');
+  const closeMenuBtn = document.getElementById('close-menu');
+  
+  openMenuBtn.addEventListener('click', () => {
+    mobileMenu.classList.add('active');
+    document.body.style.overflow = 'hidden'; 
+  });
+  function closeMenu() {
+    mobileMenu.classList.remove('active');
+    document.body.style.overflow = ''; 
+  }
+  closeMenuBtn.addEventListener('click', closeMenu);
+  document.querySelectorAll('.mobile-nav-links a, .mobile-menu .pill-btn').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Navbar Scroll Behavior
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+  // Accordion Logic
+  const accordions = document.querySelectorAll('.accordion-header');
+  accordions.forEach(acc => {
+    acc.addEventListener('click', () => {
+      const parent = acc.parentElement;
+      const isActive = parent.classList.contains('active');
+      document.querySelectorAll('.accordion-item').forEach(item => item.classList.remove('active'));
+      if (!isActive) parent.classList.add('active');
+    });
+  });
+
+  // Fade-Up Animation Observer
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
