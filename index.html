@@ -358,7 +358,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 10px;
   }
   .hero-microcopy {
     font-size: 14px;
@@ -366,14 +366,19 @@
     font-weight: 500;
     letter-spacing: -0.2px;
     padding-left: 15px;
+    margin-top: 2px;
+    margin-bottom: 2px;
   }
-  .hero-microcopy a {
-    color: rgba(255,255,255,0.9);
-    transition: color 0.3s;
-  }
-  .hero-microcopy a:hover {
+  .hero-text-link {
+    font-size: 15px;
+    font-weight: 600;
     color: var(--white);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: opacity 0.3s;
+    padding-left: 15px;
   }
+  .hero-text-link:hover { opacity: 0.8; }
 
   .hero-badges {
     display: flex;
@@ -521,13 +526,6 @@
     padding: 16px 20px;
     border-radius: 12px;
     margin-bottom: 0;
-  }
-  .concierge-left .fine-print a {
-    text-decoration: underline;
-    transition: opacity 0.3s;
-  }
-  .concierge-left .fine-print a:hover {
-    opacity: 0.7;
   }
 
   .concierge-right-wrapper {
@@ -728,6 +726,14 @@
     text-align: center;
     line-height: 1.4;
   }
+  .concierge-urgency a {
+    text-decoration: underline;
+    color: inherit;
+    transition: opacity 0.3s;
+  }
+  .concierge-urgency a:hover {
+    opacity: 0.7;
+  }
 
   /* Secure Payment Trust Logos */
   .secure-payment-trust {
@@ -784,7 +790,7 @@
   .accordion-item { border-bottom: 1px solid var(--beige); }
   .accordion-header {
     display: flex; align-items: center; gap: 16px; width: 100%; padding: 20px 0;
-    background: none; border: none; font-size: 18px; font-weight: 500; cursor: pointer;
+    background: none; border: none; font-size: 17px; font-weight: 500; cursor: pointer;
     text-align: left; font-family: inherit; color: var(--black); transition: color 0.3s;
   }
   .accordion-header:hover { color: var(--accent); }
@@ -796,7 +802,7 @@
   .accordion-toggle { margin-left: auto; font-size: 24px; font-weight: 300; transition: transform 0.4s ease; color: var(--muted); }
   .accordion-content {
     max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.4s ease;
-    font-size: 16px; color: var(--muted); line-height: 1.6; opacity: 0; padding-left: 40px;
+    font-size: 15px; color: var(--muted); line-height: 1.6; opacity: 0; padding-left: 40px;
   }
   .accordion-item.active .accordion-content { max-height: 500px; padding-bottom: 20px; opacity: 1; }
   .accordion-item.active .accordion-toggle { transform: rotate(45deg); color: var(--accent); }
@@ -804,13 +810,16 @@
   .accordion-item.active .service-icon::after { background: var(--white); }
   .accordion-item.active .accordion-header { color: var(--accent); }
 
-  .service-ctas { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; align-items: center; }
-  .s-cta {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 100px; border: 1px solid var(--sage);
-    background: var(--sage); color: var(--black); transition: all 0.3s ease;
+  .services-text-link {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--black);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color 0.3s;
+    padding-left: 15px;
   }
-  .s-cta-outline { background: transparent; border-color: var(--beige); }
+  .services-text-link:hover { color: var(--accent); }
 
   .services-img img { 
     border-radius: 0; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; box-shadow: 0 20px 40px rgba(0,0,0,0.06); 
@@ -1023,13 +1032,14 @@
   <div class="hero-content">
     <div class="hero-left">
       <h1 class="hero-title fade-up">Your Personal<br>Travel Assistant</h1>
-      <p class="hero-subtitle fade-up delay-1">Seamless travel planning, exclusive deals, and stress-free vacations. We plan every detail so you can enjoy every step of the journey.</p>
+      <p class="hero-subtitle fade-up delay-1">Seamless, concierge-led travel planning with curated experiences and stress-free coordination from start to finish.</p>
       
       <div class="hero-cta-group fade-up delay-2">
         <a href="#intake-form" class="pill-btn pill-light">
-          ✨ Plan Your Trip
+          ✨ Begin Your Concierge Experience
         </a>
-        <p class="hero-microcopy">Start with a $150 concierge deposit. By proceeding, you agree to our <a href="https://www.airtrottravels.com/refund-policy" style="text-decoration: underline;">Refund & Cancellation Policy</a>.</p>
+        <p class="hero-microcopy">Start with a $150 concierge deposit (applied to your trip)</p>
+        <a href="/concierge-services" class="hero-text-link">Explore Concierge Services</a>
       </div>
     </div>
     
@@ -1118,91 +1128,99 @@
   <div class="container services-inner">
     <div class="services-left">
       <div class="section-label fade-up">Our Services</div>
-      <h2 class="fade-up delay-1">We handle your entire trip from start to finish.</h2>
-      <p class="services-desc fade-up delay-2">Flights, hotels, visas, airport transfers, and travel insurance. We offer a range of tour packages and exclusive deals tailored to your needs.</p>
+      <h2 class="fade-up delay-1">Concierge Travel Planning</h2>
+      <p class="services-desc fade-up delay-2">End-to-end personalized travel planning and coordination.</p>
       
       <div class="service-list fade-up delay-3">
         <!-- Service 1 -->
         <div class="accordion-item active">
           <button class="accordion-header">
-            <div class="service-icon"></div> Personalized Travel Planning
+            <div class="service-icon"></div> Flight & Accommodation Curation
             <span class="accordion-toggle">+</span>
           </button>
           <div class="accordion-content">
-            We build custom itineraries tailored to your exact preferences. From flights and hotels to full daily schedules, we handle everything.
-            <div class="service-ctas">
-              <a href="#intake-form" class="s-cta">✨ Start Planning My Trip</a>
-            </div>
+            Best routes, timing, comfort, and stays tailored to your travel style.
           </div>
         </div>
         <!-- Service 2 -->
         <div class="accordion-item">
           <button class="accordion-header">
-            <div class="service-icon"></div> All-Inclusive Travel Packages
+            <div class="service-icon"></div> Itinerary & Experience Design
             <span class="accordion-toggle">+</span>
           </button>
           <div class="accordion-content">
-            Explore our curated holiday packages for top destinations, perfectly designed for solo travelers, couples, and families.
-            <div class="service-ctas">
-              <a href="https://wc2026.airtrottravels.com" class="s-cta" target="_blank">🌍 Explore Travel Packages</a>
-            </div>
+            Restaurants, lounges, activities, and destination experiences.
           </div>
         </div>
         <!-- Service 3 -->
         <div class="accordion-item">
           <button class="accordion-header">
-            <div class="service-icon"></div> Group & Event Travel
+            <div class="service-icon"></div> Airport Transfers & Transportation
             <span class="accordion-toggle">+</span>
           </button>
           <div class="accordion-content">
-            Coordinating a group? We manage flights, accommodations, and ground transport for family reunions, retreats, and large group trips.
-            <div class="service-ctas">
-              <a href="#intake-form" class="s-cta">✈️ Plan My Group Trip</a>
-            </div>
+            Pickups, drivers, and in-destination mobility planning.
           </div>
         </div>
         <!-- Service 4 -->
         <div class="accordion-item">
           <button class="accordion-header">
-            <div class="service-icon"></div> Visa & Entry Support
+            <div class="service-icon"></div> Visa & Entry Guidance
             <span class="accordion-toggle">+</span>
           </button>
           <div class="accordion-content">
-            Expert guidance through visa applications, document preparation, and entry requirements to make international travel seamless.
-            <div class="service-ctas">
-              <a href="#intake-form" class="s-cta">🛂 Get Visa Support</a>
-            </div>
+            Guidance on travel requirements and documentation.
           </div>
         </div>
         <!-- Service 5 -->
         <div class="accordion-item">
           <button class="accordion-header">
-            <div class="service-icon"></div> Corporate Travel Solutions
+            <div class="service-icon"></div> Group & Event Travel Coordination
             <span class="accordion-toggle">+</span>
           </button>
           <div class="accordion-content">
-            Streamlined booking solutions, itinerary management, and exclusive group rates designed for business professionals and corporate teams.
-            <div class="service-ctas">
-              <a href="mailto:hello@airtrottravels.com" class="s-cta">💼 Request Setup</a>
-              <a href="https://calendly.com/airtrottravels" target="_blank" class="s-cta s-cta-outline">🗓️ Schedule Consultation</a>
-            </div>
+            Birthdays, celebrations, destination events, and coordinated group trips.
           </div>
         </div>
         <!-- Service 6 -->
         <div class="accordion-item">
           <button class="accordion-header">
-            <div class="service-icon"></div> Luxury & Special Occasions
+            <div class="service-icon"></div> Luxury & Special Occasion Planning
             <span class="accordion-toggle">+</span>
           </button>
           <div class="accordion-content">
-            Destination weddings, honeymoons, and premium luxury escapes. We plan your special moments with ultimate care and exclusivity.
-            <div class="service-ctas">
-              <a href="#intake-form" class="s-cta">🥂 Plan My Experience</a>
-            </div>
+            High-touch travel, milestone trips, and premium experiences.
+          </div>
+        </div>
+        <!-- Service 7 -->
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <div class="service-icon"></div> Corporate Travel Management
+            <span class="accordion-toggle">+</span>
+          </button>
+          <div class="accordion-content">
+            Efficient, polished travel planning for business and executive needs.
+          </div>
+        </div>
+        <!-- Service 8 -->
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <div class="service-icon"></div> On-Trip Concierge Support
+            <span class="accordion-toggle">+</span>
+          </button>
+          <div class="accordion-content">
+            Real-time support before and during your trip.
           </div>
         </div>
       </div>
+
+      <!-- Services Global CTAs underneath bullets -->
+      <div class="services-global-cta fade-up delay-3" style="margin-top: 30px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start;">
+        <a href="#intake-form" class="pill-btn pill-dark">✨ Begin Your Concierge Experience</a>
+        <a href="/concierge-services" class="services-text-link">Explore Concierge Services</a>
+      </div>
     </div>
+    
     <div class="services-img fade-up delay-2">
       <img src="https://i.ibb.co/GQ2ctwJ8/jahanzeb-ahsan-KKo-Cyi-U-x-AU-unsplash.jpg" alt="Travel Planning Services">
     </div>
@@ -1248,7 +1266,7 @@
       <div class="concierge-left">
         <h3>Your Personal Concierge Service</h3>
         <p class="desc">Airtrot Travels provides personalized travel planning and concierge services tailored to each client's preferences, destination, and budget. To begin, clients pay a concierge deposit which covers itinerary design, research, and planning services.</p>
-        <p class="fine-print">* The $150 concierge fee is applied toward the final cost of the trip when bookings are confirmed. Subject to our <a href="https://www.airtrottravels.com/refund-policy">Refund & Cancellation Policy</a>.</p>
+        <p class="fine-print">* The $150 concierge fee is applied toward the final cost of the trip when bookings are confirmed.</p>
       </div>
       
       <!-- EXCLUSIVE AMEX "BLACK CARD" STYLED BOX & CTA -->
@@ -1302,8 +1320,8 @@
 
         <!-- NEW PERMANENT CTA BUTTON -->
         <div class="concierge-cta-area">
-          <a href="#intake-form" class="cta-primary-btn">✨ Start Planning Now</a>
-          <span class="concierge-urgency">Required to begin personalized travel planning.</span>
+          <a href="#intake-form" class="cta-primary-btn">✨ Begin Your Concierge Experience</a>
+          <span class="concierge-urgency">By proceeding, you agree to our <a href="https://www.airtrottravels.com/refund-policy">Refund & Cancellation Policy</a>.</span>
         </div>
 
         <!-- SECURE PAYMENT TRUST LOGOS -->
@@ -1374,7 +1392,7 @@
     <p>Speak instantly with a travel agent for quick replies, general inquiries, or last-minute travel support before beginning your formal planning.</p>
     
     <div class="contact-methods">
-      <a href="#intake-form" class="pill-btn pill-dark">✨ Start Planning</a>
+      <a href="#intake-form" class="pill-btn pill-dark">✨ Begin Your Concierge Experience</a>
     </div>
     
     <div class="secondary-contacts">
@@ -1414,7 +1432,7 @@
         <div class="footer-col">
           <h6>Quick Links</h6>
           <a href="https://www.airtrottravels.com/#about">About Us</a>
-          <a href="https://www.airtrottravels.com/#services">Our Services</a>
+          <a href="/concierge-services">Concierge Services</a>
           <a href="https://wc2026.airtrottravels.com" target="_blank">World Cup 2026</a>
         </div>
         <div class="footer-col">
