@@ -139,6 +139,7 @@
     border-radius: 100px;
     border: 1px solid var(--white);
     letter-spacing: -0.3px;
+    white-space: nowrap; /* Prevent 2 rows */
     transition: all 0.3s ease;
   }
   nav.scrolled .nav-cta {
@@ -214,6 +215,7 @@
     transition: all 0.3s ease;
     border: 1px solid currentColor;
     justify-content: center;
+    white-space: nowrap; /* Forces text to stay on one row */
   }
   .pill-dark { background: var(--black); color: var(--white); border-color: var(--black); }
   .pill-light { background: var(--white); color: var(--black); border-color: var(--white); }
@@ -337,9 +339,9 @@
     justify-content: space-between;
     align-items: flex-end;
   }
-  .hero-left { max-width: 700px; }
+  .hero-left { max-width: 700px; width: 100%; }
   .hero-title {
-    font-size: clamp(44px, 7vw, 80px);
+    font-size: clamp(40px, 7vw, 80px);
     font-weight: 500;
     color: var(--white);
     line-height: 1em;
@@ -717,6 +719,7 @@
     gap: 8px;
     cursor: pointer;
     transition: 0.3s ease;
+    white-space: nowrap; /* Forces text to stay on one row */
   }
   .concierge-urgency {
     font-size: 13.5px;
@@ -915,7 +918,8 @@
     .services-img { order: -1; } 
     .footer-top { grid-template-columns: 1fr; }
     .wc-box { padding: 60px 25px; }
-    .nav-logo img { height: 120px; } 
+    
+    .nav-logo img { height: 100px; } /* Slightly scaled down tablet logo */
 
     nav.scrolled .hamburger-btn { color: var(--black); }
     nav.scrolled .nav-logo img {
@@ -929,10 +933,28 @@
   }
 
   @media (max-width: 600px) {
+    /* Prevent Logo & Title Overlap */
+    .nav-logo img { height: 75px; } /* Ensures the logo isn't massive */
+    nav.scrolled .nav-logo img { height: 60px; }
+    
+    .hero-content { 
+      padding: 160px 20px 80px 20px; /* Top padding added as buffer to prevent push-up */
+      flex-direction: column; 
+      align-items: flex-start; 
+      justify-content: flex-end;
+      gap: 30px; 
+    }
+    
+    /* Ensure long button texts fit horizontally on tiny 320px screens */
+    .container { padding: 0 20px; }
+    .nav-inner { padding: 0 20px; }
+    .pill-btn, .cta-primary-btn { 
+      font-size: 14px; 
+      padding: 14px 20px; 
+    }
+
     .section-pad { padding: 60px 0; } 
     .cta-contact { padding: 60px 0; }
-
-    .hero-content { flex-direction: column; align-items: flex-start; gap: 40px; }
     .hero-badges { display: none; } 
     
     .concierge-left {
@@ -950,8 +972,8 @@
       scroll-snap-type: x mandatory;
       gap: 16px;
       padding-bottom: 10px;
-      margin: 0 -30px 20px -30px; 
-      padding: 0 30px 10px 30px; 
+      margin: 0 -20px 20px -20px; 
+      padding: 0 20px 10px 20px; 
       scrollbar-width: none; 
     }
     .process-grid::-webkit-scrollbar { display: none; }
