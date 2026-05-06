@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id=GT-MK48ZHF5'+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GT-MK48ZHF5');
+</script>
+<!-- End Google Tag Manager -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concierge Confirmation | Airtrot Travels</title>
+<meta name="description" content="Your concierge travel planning is officially underway. We have received your request and payment.">
+<link rel="canonical" href="https://airtrottravels.com/concierge-confirmed">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white: #ffffff;
+    --black: #000000;
+    --cream: #f6f7f1;
+    --sage: #e9ebe1;
+    --beige: #e3dfd4;
+    --muted: #666666;
+    --accent: #334789;
+  }
+
+  body {
+    font-family: 'Instrument Sans', sans-serif;
+    background-color: var(--cream);
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { text-decoration: none; color: inherit; }
+
+  /* ── SHIMMERING LABEL ── */
+  @keyframes shimmer {
+    0% { background-position: 200% center; }
+    100% { background-position: -200% center; }
+  }
+  .section-label {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 8px 20px; border-radius: 100px; font-size: 11px; font-weight: 700;
+    color: var(--muted); letter-spacing: 0.8px; text-transform: uppercase;
+    background: linear-gradient(110deg, var(--sage) 30%, #ffffff 50%, var(--sage) 70%);
+    background-size: 200% 100%; animation: shimmer 3s infinite linear;
+    border: 1px solid rgba(0,0,0,0.06); margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+  }
+
+  /* ── CENTER MODAL ── */
+  .confirmation-card {
+    background: var(--white);
+    max-width: 680px;
+    width: 100%;
+    padding: 60px 50px;
+    border-radius: 24px;
+    border: 1px solid var(--beige);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+    text-align: center;
+  }
+
+  .confirmation-card h1 {
+    font-size: clamp(40px, 6vw, 64px);
+    font-weight: 500;
+    letter-spacing: -1.5px;
+    margin-bottom: 12px;
+    line-height: 1.1;
+  }
+
+  .confirmation-card h2 {
+    font-size: clamp(20px, 4vw, 24px);
+    font-weight: 500;
+    margin-bottom: 32px;
+    letter-spacing: -0.5px;
+  }
+
+  .confirmation-card p {
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 0 auto 24px auto;
+    max-width: 540px;
+  }
+
+  .confirmation-card p:last-of-type {
+    margin-bottom: 40px;
+  }
+
+  /* ── BUTTON ── */
+  .pill-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px; 
+    padding: 16px 32px; border-radius: 100px; font-size: 16px; font-weight: 500; 
+    letter-spacing: -0.3px; cursor: pointer; transition: all 0.3s ease; 
+    border: 1px solid var(--black); background: var(--black); color: var(--white);
+    max-width: 380px; width: 100%;
+  }
+  .pill-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(51, 71, 137, 0.2);
+  }
+
+  /* ── RETURN LINK ── */
+  .return-link {
+    display: inline-block;
+    margin-top: 28px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--muted);
+    transition: color 0.3s;
+  }
+  .return-link:hover {
+    color: var(--black);
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .delay-1 { transition-delay: 0.1s; }
+  .delay-2 { transition-delay: 0.2s; }
+  .delay-3 { transition-delay: 0.3s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .confirmation-card { padding: 40px 25px; }
+    .pill-btn { font-size: 15px; padding: 15px 20px; }
+  }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+<iframe src="https://www.googletagmanager.com/ns.html?id=GT-MK48ZHF5"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div class="confirmation-card fade-up visible">
+  <div class="section-label">Request Confirmed</div>
+  
+  <h1 class="delay-1 fade-up visible">You’re confirmed.</h1>
+  <h2 class="delay-1 fade-up visible">Your concierge planning is officially underway.</h2>
+  
+  <p class="delay-2 fade-up visible">
+    We’ve received your request and payment, and our team is now curating your personalized travel experience.
+  </p>
+  
+  <p class="delay-2 fade-up visible">
+    You’ll hear from us within 24–48 hours with your next steps.
+  </p>
+  
+  <p class="delay-2 fade-up visible">
+    If you’d like to share anything additional or need to reach us sooner, message us below.
+  </p>
+  
+  <div class="delay-3 fade-up visible">
+    <a href="https://wa.me/19727106742?text=Hi%20Airtrot%2C%20I%E2%80%99ve%20just%20completed%20my%20concierge%20request%20and%20payment.%20My%20name%20is%20%5BYour%20Name%5D.%20Happy%20to%20share%20any%20additional%20details." target="_blank" class="pill-btn">
+      💬 Message Airtrot on WhatsApp
+    </a>
+  </div>
+
+  <div class="delay-3 fade-up visible">
+    <a href="/" class="return-link">← Return to Homepage</a>
+  </div>
+</div>
+
+<script>
+  // Simple intersection observer to trigger the fade up smoothly on load
+  document.addEventListener("DOMContentLoaded", () => {
+    const fadeEls = document.querySelectorAll('.fade-up');
+    fadeEls.forEach(el => {
+      // Small timeout ensures the CSS transition fires after initial render
+      setTimeout(() => {
+        el.classList.add('visible');
+      }, 50);
+    });
+  });
+</script>
+
+</body>
+</html>
