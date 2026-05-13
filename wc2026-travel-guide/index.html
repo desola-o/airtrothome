@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO TITLE AND META DESCRIPTION -->
+<title>World Cup 2026 Travel Guide | Airtrot Travels</title>
+<meta name="description" content="Plan ahead and avoid entry and travel issues for World Cup 2026. Explore visa requirements, city-to-city transportation, and local travel logistics.">
+
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  /* ── SHARED BASE STYLES ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --white: #ffffff;
+    --black: #000000;
+    --cream: #f6f7f1;
+    --sage: #e9ebe1;
+    --beige: #e3dfd4;
+    --muted: #585858;
+    --accent: #334789;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 16px;
+    color: var(--black);
+    background: var(--cream);
+    overflow-x: hidden;
+  }
+  img { display: block; max-width: 100%; object-fit: cover; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ── BUTTONS ── */
+  .nav-cta:hover, .pill-btn:hover, .s-cta:hover, .cta-primary-btn:hover {
+    background: var(--accent) !important;
+    color: var(--white) !important;
+    border-color: var(--accent) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(51, 71, 137, 0.3) !important;
+  }
+  .pill-btn {
+    display: inline-flex; align-items: center; gap: 8px; justify-content: center;
+    padding: 16px 32px; border-radius: 100px; font-size: 16px; font-weight: 500;
+    letter-spacing: -0.2px; cursor: pointer; transition: all 0.3s ease; border: 1px solid currentColor;
+  }
+  .pill-dark { background: var(--black); color: var(--white); border-color: var(--black); }
+  .pill-light { background: var(--white); color: var(--black); border-color: var(--white); }
+  .pill-outline { background: transparent; color: var(--black); border-color: var(--black); }
+  
+  /* Accent Blue Button (Main CTA) */
+  .cta-primary-btn { background: var(--accent); color: var(--white); border-color: var(--accent); }
+
+  /* ── NAVIGATION ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 28px 0; background: transparent; 
+    transition: background 0.4s ease, padding 0.4s ease, backdrop-filter 0.4s ease, border-bottom 0.4s ease;
+    border-bottom: 1px solid transparent;
+  }
+  nav.scrolled {
+    padding: 10px 0; background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  .nav-inner { max-width: 1320px; margin: 0 auto; padding: 0 30px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo img { height: 160px; width: auto; transition: 0.5s ease; filter: brightness(0) invert(1); }
+  nav.scrolled .nav-logo img { height: 95px; filter: brightness(0); }
+  
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.9); transition: 0.3s; }
+  nav.scrolled .nav-links a { color: var(--muted); }
+  .nav-links a:hover { color: var(--white); transform: translateY(-1px); }
+  nav.scrolled .nav-links a:hover { color: var(--black); }
+  
+  .nav-cta {
+    display: flex; align-items: center; gap: 8px; background: var(--white); color: var(--black);
+    font-size: 14px; font-weight: 500; padding: 10px 22px; border-radius: 100px;
+    border: 1px solid var(--white); transition: all 0.3s ease;
+  }
+  nav.scrolled .nav-cta { background: var(--black); color: var(--white); border-color: var(--black); }
+
+  .hamburger-btn { display: none; background: none; border: none; cursor: pointer; color: var(--white); padding: 10px; margin-right: -10px; }
+  nav.scrolled .hamburger-btn { color: var(--black); }
+  .hamburger-icon { width: 24px; height: 2px; background: currentColor; position: relative; }
+  .hamburger-icon::before, .hamburger-icon::after { content: ''; position: absolute; width: 24px; height: 2px; background: currentColor; left: 0; }
+  .hamburger-icon::before { top: -8px; }
+  .hamburger-icon::after { top: 8px; }
+
+  /* Mobile Menu */
+  .mobile-menu {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px); z-index: 1000; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: 0.4s ease;
+  }
+  .mobile-menu.active { opacity: 1; pointer-events: auto; }
+  .close-menu-btn { position: absolute; top: 25px; right: 25px; font-size: 44px; background: none; border: none; cursor: pointer; font-weight: 300; }
+  .mobile-nav-links { list-style: none; text-align: center; margin-bottom: 40px; padding: 0; }
+  .mobile-nav-links li { margin-bottom: 28px; }
+  .mobile-nav-links a { font-size: 28px; font-weight: 500; color: var(--black); transition: 0.3s; }
+
+  /* ── UTILITIES ── */
+  .container { max-width: 1320px; margin: 0 auto; padding: 0 30px; }
+  .section-pad { padding: 100px 0; }
+  .p-0 { padding: 0 !important; }
+  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .delay-1 { transition-delay: 0.1s; }
+  .delay-2 { transition-delay: 0.2s; }
+  .delay-3 { transition-delay: 0.3s; }
+  
+  .text-center { text-align: center; }
+  .mt-40 { margin-top: 40px; }
+  .mt-60 { margin-top: 60px; }
+
+  /* ── PAGE HERO (Made to Pop) ── */
+  .page-hero {
+    position: relative; background: var(--black); color: var(--white);
+    padding: 260px 0 160px; text-align: center; overflow: hidden;
+  }
+  .page-hero-img {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover; z-index: 0; opacity: 1;
+  }
+  .page-hero-overlay {
+    position: absolute; inset: 0;
+    /* Black gradient across the header to make text pop */
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.35) 100%);
+    z-index: 1; pointer-events: none;
+  }
+  .page-hero-inner { position: relative; z-index: 2; max-width: 950px; margin: 0 auto; }
+  .page-hero h1 { 
+    font-size: clamp(44px, 7vw, 76px); 
+    font-weight: 600; 
+    letter-spacing: -2px; 
+    margin-bottom: 24px; 
+    line-height: 1.05; 
+    text-shadow: 0 4px 24px rgba(0,0,0,0.6); 
+  }
+  .page-hero p { 
+    font-size: clamp(18px, 2.5vw, 24px); 
+    color: rgba(255,255,255,0.95); 
+    line-height: 1.5; 
+    margin-bottom: 16px; 
+    text-shadow: 0 2px 12px rgba(0,0,0,0.6); 
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .page-hero p.hero-subtext {
+    font-size: clamp(15px, 2vw, 18px);
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 48px;
+    font-weight: 400;
+  }
+  
+  .hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+
+  /* ── DYNAMIC GLOW BORDER AND HOVER EFFECTS ── */
+  .hover-glow {
+    position: relative;
+    border: none !important; 
+    background: transparent !important;
+    z-index: 1;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .hover-glow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(120deg, var(--beige) 0%, var(--beige) 40%, rgba(51, 71, 137, 0.7) 50%, var(--beige) 60%, var(--beige) 100%);
+    background-size: 200% auto;
+    z-index: -2;
+    animation: lightSweep 4s linear infinite;
+    opacity: 0.6;
+    transition: opacity 0.4s ease;
+  }
+  .hover-glow::after {
+    content: "";
+    position: absolute;
+    inset: 1px; 
+    border-radius: calc(inherit - 1px);
+    background: var(--bg-color, var(--white));
+    z-index: -1;
+  }
+  .hover-glow:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(51, 71, 137, 0.12);
+  }
+  .hover-glow:hover::before {
+    opacity: 1;
+  }
+  @keyframes lightSweep {
+    0% { background-position: 200% center; }
+    100% { background-position: -100% center; }
+  }
+
+  /* ── TWO COL INFO ── */
+  .info-split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .info-box { padding: 60px; border-radius: 24px; }
+  .info-box h3 { font-size: 32px; margin-bottom: 20px; font-weight: 600; letter-spacing: -0.5px; }
+  
+  .text-list { list-style: none; }
+  .text-list li { font-size: 17px; color: var(--muted); line-height: 1.6; margin-bottom: 20px; }
+  .text-list li strong { color: var(--black); font-weight: 600; }
+  
+  .star-list { list-style: none; }
+  .star-list li {
+    position: relative; padding-left: 32px; margin-bottom: 20px;
+    font-size: 17px; color: var(--muted); line-height: 1.6;
+  }
+  .star-list li::before {
+    content: '⭐'; position: absolute; left: 0; top: 0; font-size: 16px;
+  }
+  .star-list li strong { color: var(--black); font-weight: 600; }
+
+  /* Image Top Cards (Search Tool, Essentials & Itinerary) */
+  .inner-card-wrap {
+    display: flex; flex-direction: column; height: 100%;
+    border-radius: 23px; 
+    overflow: hidden; position: relative; z-index: 2;
+  }
+  .card-top-img {
+    width: 100%; height: 260px; object-fit: cover;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    transition: transform 0.6s ease;
+  }
+  .hover-glow:hover .card-top-img {
+    transform: scale(1.03);
+  }
+  .card-body {
+    padding: 40px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; flex: 1; text-align: center;
+  }
+
+  /* ── HIGHLIGHT CTA BLOCK & VISUAL LIST ── */
+  .highlight-cta { max-width: 900px; margin: 0 auto; border-radius: 24px; }
+  .highlight-cta h2 { font-size: 36px; font-weight: 600; letter-spacing: -1px; margin-bottom: 20px; }
+  
+  .visual-list-wrapper { display: flex; justify-content: center; margin: 30px 0 45px; }
+  .visual-list { display: flex; flex-direction: column; gap: 24px; text-align: left; }
+  .visual-item { display: flex; align-items: center; gap: 18px; }
+  .visual-icon { 
+    width: 44px; height: 44px; border-radius: 50%; 
+    background: rgba(51, 71, 137, 0.08); color: var(--accent);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .visual-icon svg { width: 22px; height: 22px; }
+  .visual-item span { font-size: 19px; font-weight: 500; color: var(--black); letter-spacing: -0.3px;}
+
+  /* ── FOOTER ── */
+  footer { background: #0a0a0a; color: var(--white); padding: 60px 0 30px; margin-top: 60px; } 
+  .footer-inner { max-width: 1320px; margin: 0 auto; padding: 0 30px; }
+  .footer-top { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; padding-bottom: 50px; border-bottom: 1px solid #222; margin-bottom: 30px; }
+  .footer-left h3 { font-size: clamp(28px, 3vw, 42px); font-weight: 500; letter-spacing: -1px; margin-bottom: 20px; max-width: 400px; }
+  .subscribe-form { display: flex; gap: 10px; max-width: 400px; flex-direction: row; align-items: center; }
+  .subscribe-input { flex: 1; height: 52px; padding: 0 24px; border: 1px solid #333; border-radius: 100px; background: transparent; color: var(--white); outline: none; }
+  .subscribe-btn { height: 52px; min-height: 52px; margin: 0; box-sizing: border-box; white-space: nowrap; border: none; }
+  .footer-agreement-text { font-size: 13px; color: #888; margin-top: 16px; max-width: 400px; line-height: 1.5; }
+  .footer-agreement-text a { color: #ccc; text-decoration: underline; }
+  .footer-right { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 30px; }
+  .footer-col h6 { font-size: 13px; font-weight: 600; color: #888; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 1px; }
+  .footer-col p, .footer-col a { display: block; font-size: 15px; color: #ccc; margin-bottom: 12px; transition: 0.3s; line-height: 1.5;}
+  .footer-col a:hover { color: var(--white); padding-left: 4px; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; color: #666; font-size: 14px; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .info-split { grid-template-columns: 1fr; }
+    .footer-right { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  }
+  @media (max-width: 900px) {
+    .nav-links, .nav-cta { display: none; }
+    .hamburger-btn { display: block; }
+    .nav-logo img { height: 120px; } 
+    nav.scrolled .nav-logo img { height: 75px; }
+    .footer-top { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .section-pad { padding: 60px 0; }
+    .page-hero { padding: 180px 0 80px; }
+    .info-box { padding: 40px 25px; }
+    .subscribe-form { flex-direction: column; width: 100%; }
+    .subscribe-input, .subscribe-btn { width: 100%; }
+    .footer-right { grid-template-columns: 1fr; gap: 30px; }
+    .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+    .visual-item span { font-size: 17px; }
+    .card-top-img { height: 200px; }
+    .card-body { padding: 30px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="https://airtrottravels.com" class="nav-logo">
+      <img src="https://i.ibb.co/35PvBjKF/Airtrot-Logo-500px.png" alt="Airtrot Travels">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#visa-requirements">Visa Info</a></li>
+      <li><a href="#transport-logistics">Transport</a></li>
+      <li><a href="#full-itinerary">Concierge</a></li>
+    </ul>
+    <a href="https://form.typeform.com/to/qBdRUgis" class="nav-cta" target="_blank" rel="noopener noreferrer">
+      Plan My Trip
+    </a>
+    <button class="hamburger-btn" id="open-menu" aria-label="Open mobile menu">
+      <div class="hamburger-icon"></div>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <button class="close-menu-btn" id="close-menu" aria-label="Close menu">&times;</button>
+  <ul class="mobile-nav-links">
+    <li><a href="#visa-requirements">Visa Info</a></li>
+    <li><a href="#transport-logistics">Transport</a></li>
+    <li><a href="#full-itinerary">Concierge</a></li>
+  </ul>
+  <a href="https://form.typeform.com/to/qBdRUgis" class="pill-btn cta-primary-btn" target="_blank" rel="noopener noreferrer">Plan My Trip</a>
+</div>
+
+<!-- HERO SECTION -->
+<header class="page-hero">
+  <!-- Airport/Logistics Background Image -->
+  <img src="https://i.ibb.co/v6m4r67B/anete-lusina-r-FKBUwLg-WQ-unsplash.jpg" alt="Travel and Visa Logistics" class="page-hero-img">
+  <div class="page-hero-overlay"></div>
+
+  <div class="container page-hero-inner">
+    <h1 class="fade-up delay-1">World Cup 2026 Travel Guide 🌍</h1>
+    <p class="fade-up delay-2">Plan ahead and avoid entry and travel issues.</p>
+    <p class="fade-up delay-2 hero-subtext">Visa requirements and travel logistics vary depending on your route, nationality, and match schedule. Getting it wrong can delay or disrupt your trip.</p>
+    
+    <div class="hero-buttons fade-up delay-3">
+      <!-- Main CTA Points to Typeform -->
+      <a href="https://form.typeform.com/to/qBdRUgis" class="pill-btn cta-primary-btn" target="_blank" rel="noopener noreferrer">Plan My World Cup Trip &rarr;</a>
+      <a href="https://wc2026.airtrottravels.com/visa-checker" class="pill-btn pill-light">Check Entry Requirements &rarr;</a>
+    </div>
+  </div>
+</header>
+
+<!-- VISA & TRANSPORT (SPLIT SECTION) -->
+<section class="section-pad" id="visa-requirements">
+  <div class="container info-split">
+    
+    <!-- Section 1: Visa & Entry -->
+    <div class="info-box hover-glow fade-up" style="--bg-color: var(--white);">
+      <h3>Visa & Entry Requirements</h3>
+      <p style="font-size: 17px; color: var(--muted); margin-bottom: 24px;">Requirements vary by country. Before traveling:</p>
+      <ul class="text-list" style="margin-bottom: 30px;">
+        <li><strong>Confirm entry requirements early</strong></li>
+        <li><strong>Check passport validity</strong></li>
+        <li><strong>Review official sources</strong></li>
+      </ul>
+      <a href="https://wc2026.airtrottravels.com/visa-checker" class="pill-btn pill-dark">Check Entry Requirements &rarr;</a>
+    </div>
+
+    <!-- Section 2: Transportation -->
+    <div class="info-box hover-glow fade-up delay-1" style="--bg-color: var(--sage);" id="transport-logistics">
+      <h3>Transportation Between Cities</h3>
+      <p style="font-size: 17px; color: var(--muted); margin-bottom: 24px;">Matches are spread across multiple locations. Options include:</p>
+      <ul class="text-list" style="margin-bottom: 30px;">
+        <li><strong>Domestic flights</strong></li>
+        <li><strong>Trains</strong></li>
+        <li><strong>Car rentals</strong></li>
+        <li><strong>Rideshare</strong></li>
+      </ul>
+      <a href="https://wc2026.airtrottravels.com/city-guides" class="pill-btn pill-dark">View Host Cities & Transport &rarr;</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- LOCAL TRANSPORT & TIPS (SPLIT SECTION) -->
+<section class="section-pad" style="background: var(--white);">
+  <div class="container info-split">
+    
+    <!-- Section 3: Getting Around Locally -->
+    <div class="info-box hover-glow fade-up" style="--bg-color: var(--cream);">
+      <h3>Getting Around Locally</h3>
+      <p style="font-size: 17px; color: var(--muted); margin-bottom: 24px;">Navigate the host cities effectively:</p>
+      <ul class="star-list">
+        <li><strong>Public transport will be heavily used</strong></li>
+        <li><strong>Traffic congestion is expected</strong></li>
+        <li><strong>Plan extra time on match days</strong></li>
+      </ul>
+    </div>
+
+    <!-- Section 4: Travel Tips -->
+    <div class="info-box hover-glow fade-up delay-1" style="--bg-color: var(--white);">
+      <h3>Travel Tips</h3>
+      <p style="font-size: 17px; color: var(--muted); margin-bottom: 24px;">Stay ahead of the crowds:</p>
+      <ul class="star-list">
+        <li><strong>Book early</strong></li>
+        <li><strong>Keep documents ready</strong></li>
+        <li><strong>Allow buffers between travel and matches</strong></li>
+        <li><strong>Stay flexible</strong></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- MID-PAGE CTA -->
+<section class="section-pad text-center">
+  <div class="container fade-up">
+    <h2 style="font-size: 32px; font-weight: 600; letter-spacing: -0.5px;">Want everything coordinated for you?</h2>
+    <p style="font-size: 18px; color: var(--muted); margin: 20px 0 40px;">Avoid managing logistics across multiple cities.</p>
+    <a href="https://form.typeform.com/to/qBdRUgis" class="pill-btn cta-primary-btn" target="_blank" rel="noopener noreferrer">Plan My World Cup Trip &rarr;</a>
+  </div>
+</section>
+
+<!-- SUPPORTING ESSENTIALS CARD -->
+<section class="section-pad" style="background: var(--cream);">
+  <div class="container text-center">
+    <div class="info-box hover-glow fade-up p-0" style="--bg-color: var(--white); max-width: 800px; margin: 0 auto;">
+      <div class="inner-card-wrap">
+        <img src="https://i.ibb.co/35g6ghVw/oziel-gomez-n7-AHammq-RX4-unsplash.jpg" alt="Travel Essentials" class="card-top-img" style="height: 300px;">
+        <div class="card-body">
+          <h3 style="margin-bottom: 16px;">Supporting Essentials</h3>
+          <p style="font-size: 18px; color: var(--muted); margin-bottom: 30px;">Prepare for your trip beyond visas and transport:</p>
+          <a href="https://wc2026.airtrottravels.com/essentials" class="pill-btn pill-dark">View Travel Essentials &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA BLOCK -->
+<section class="section-pad" id="full-itinerary">
+  <div class="container">
+    <div class="highlight-cta hover-glow fade-up text-center p-0" style="--bg-color: var(--sage);">
+      <div class="inner-card-wrap">
+        <!-- Travel Logistics Image -->
+        <img src="https://i.ibb.co/XrRJzjVZ/geojango-maps-CWbb-JW-7-Fsw-unsplash-1.jpg" alt="Logistics and Planning" class="card-top-img" style="height: 300px;">
+        
+        <div class="card-body">
+          <h2>Simplify your entire trip</h2>
+          <p style="font-size: 18px; color: var(--muted);">Airtrot helps you:</p>
+          
+          <!-- Enhanced Visual List -->
+          <div class="visual-list-wrapper">
+            <div class="visual-list">
+              <div class="visual-item">
+                <div class="visual-icon">
+                  <!-- Coordinate Travel (Map/Nodes) Icon -->
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                  </svg>
+                </div>
+                <span>Coordinate travel across cities</span>
+              </div>
+              
+              <div class="visual-item">
+                <div class="visual-icon">
+                  <!-- Align Schedules (Calendar/Clock) Icon -->
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                    <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"></path>
+                  </svg>
+                </div>
+                <span>Align flights, stays, and schedules</span>
+              </div>
+
+              <div class="visual-item">
+                <div class="visual-icon">
+                  <!-- Navigate Logistics (Check/Shield) Icon -->
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    <polyline points="9 12 11 14 15 10"></polyline>
+                  </svg>
+                </div>
+                <span>Navigate logistics with clarity</span>
+              </div>
+            </div>
+          </div>
+          
+          <a href="https://form.typeform.com/to/qBdRUgis" class="pill-btn cta-primary-btn" target="_blank" rel="noopener noreferrer">Plan My World Cup Trip &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-left">
+        <h3>Get exclusive deals sent straight to your inbox</h3>
+        <form class="subscribe-form" id="newsletter-form">
+          <input type="email" name="email" class="subscribe-input" placeholder="Sign up for free" required>
+          <button type="submit" class="pill-btn pill-light subscribe-btn">✉️ Subscribe</button>
+        </form>
+        <p class="footer-agreement-text">By submitting a travel request or purchasing concierge services, you agree to Airtrot’s <a href="https://www.airtrottravels.com/terms-and-conditions">Terms & Conditions</a> and <a href="https://www.airtrottravels.com/refund-policy">Cancellation Policy</a>.</p>
+      </div>
+      <div class="footer-right">
+        <div class="footer-col">
+          <h6>Contact</h6>
+          <p>📞 (972)-710-6742</p>
+          <p>📩 hello@airtrottravels.com</p>
+          <p>🌍 Global Travel Concierge • Dallas, TX & Lagos, Nigeria</p>
+        </div>
+        <div class="footer-col">
+          <h6>Socials</h6>
+          <a href="https://www.instagram.com/airtrot_travels/" target="_blank">Instagram</a>
+          <a href="https://x.com/airtrot" target="_blank">X (Twitter)</a>
+          <a href="https://www.threads.net/@airtrot_travels" target="_blank">Threads</a>
+        </div>
+        <div class="footer-col">
+          <h6>Quick Links</h6>
+          <a href="https://airtrottravels.com/about/">About Us</a>
+          <a href="https://airtrottravels.com/concierge-services/">Concierge Services</a>
+          <a href="https://airtrottravels.com/faq/">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h6>Legal</h6>
+          <a href="https://www.airtrottravels.com/terms-and-conditions">Terms & Conditions</a>
+          <a href="https://www.airtrottravels.com/privacy-policy">Privacy Policy</a>
+          <a href="https://www.airtrottravels.com/refund-policy">Refund Policy</a>
+          <a href="https://www.airtrottravels.com/disclaimer">Disclaimer</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© Airtrot Travels. All Rights Reserved.</div>
+      <div>Web Design by <a href="#" target="_blank">GrowthMonkey</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Cleaned Up Navbar Scroll Behavior
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // Mobile Menu Logic
+  const mobileMenu = document.getElementById('mobile-menu');
+  const openMenuBtn = document.getElementById('open-menu');
+  const closeMenuBtn = document.getElementById('close-menu');
+  
+  openMenuBtn.addEventListener('click', () => {
+    mobileMenu.classList.add('active');
+    document.body.style.overflow = 'hidden'; 
+  });
+  function closeMenu() {
+    mobileMenu.classList.remove('active');
+    document.body.style.overflow = ''; 
+  }
+  closeMenuBtn.addEventListener('click', closeMenu);
+  document.querySelectorAll('.mobile-nav-links a, .mobile-menu .pill-btn').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Fade-Up Animation Observer
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
