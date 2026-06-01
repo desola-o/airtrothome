@@ -13,8 +13,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Airtrot Travels — Your Personal Travel Assistant</title>
-<meta name="description" content="Airtrot Travels provides seamless, concierge-led travel planning with curated experiences, flight and accommodation curation, and stress-free coordination from start to finish.">
+<title>Airtrot Travels — Personalized Travel Planning & Concierge Support</title>
+<meta name="description" content="Airtrot Travels provides personalized travel planning, concierge support, curated experiences, flight and accommodation guidance, and stress-free coordination from request to final itinerary.">
 <link rel="canonical" href="https://airtrottravels.com/">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -845,6 +845,61 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     border-radius: 0; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; box-shadow: 0 20px 40px rgba(0,0,0,0.06); 
   }
 
+
+  /* ── TYPEFORM PLACEHOLDER / CTA SUPPORT ── */
+  .package-note {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 520px;
+    margin: 18px 0 22px;
+  }
+  .button-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .typeform-placeholder-section {
+    background: var(--white);
+    padding: 70px 0;
+  }
+  .typeform-placeholder-card {
+    background: #fff4cc;
+    border: 3px dashed #ffb800;
+    border-radius: 20px;
+    padding: 42px 30px;
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+  }
+  .typeform-placeholder-card h3 {
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 600;
+    letter-spacing: -0.8px;
+    margin-bottom: 12px;
+  }
+  .typeform-placeholder-card p {
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 620px;
+    margin: 0 auto 18px;
+  }
+  .typeform-placeholder-label {
+    display: inline-block;
+    background: #ffef99;
+    color: #5c4200;
+    border: 1px solid #ffcc33;
+    border-radius: 100px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+
   /* ── TESTIMONIALS ── */
   .testimonials { background: var(--white); text-align: center; }
   .test-wrap { max-width: 900px; margin: 0 auto; position: relative; }
@@ -1077,8 +1132,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
       <p class="hero-subtitle fade-up delay-1">Seamless, concierge-led travel planning with curated experiences and stress-free coordination from start to finish.</p>
       
       <div class="hero-cta-group fade-up delay-2">
-        <p class="hero-microcopy">Start with a $150 concierge deposit (applied to your trip)</p>
-        <a href="/concierge-services/" class="pill-btn pill-light">✨ Explore Concierge Services</a>
+        <p class="hero-microcopy">Start with a short travel request — no payment required to inquire.</p>
+        <a href="#travel-request-form" class="pill-btn pill-light">✨ Plan My Trip</a>
       </div>
     </div>
     
@@ -1259,9 +1314,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
       </div>
 
       <!-- Services Global CTAs underneath bullets -->
-      <div class="services-global-cta fade-up delay-3" style="margin-top: 30px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start;">
-        <a href="https://buy.stripe.com/14AfZh6yE9E1eCe33I5Rm00" target="_blank" class="pill-btn pill-dark">✨ Begin Your Concierge Experience</a>
-        <a href="/concierge-services/" class="services-text-link">Explore Concierge Services</a>
+      <div class="services-global-cta fade-up delay-3" style="margin-top: 30px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+        <p class="package-note">Not every traveler needs the same level of support. Compare our planning options and choose the experience that best fits your trip.</p>
+        <div class="button-row">
+          <a href="#travel-request-form" class="pill-btn pill-dark">✨ Plan My Trip</a>
+          <a href="/concierge-services/" class="pill-btn pill-outline">Explore Concierge Services</a>
+        </div>
       </div>
     </div>
     
@@ -1276,24 +1334,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
   <div class="container">
     <div class="process-top fade-up">
       <div class="section-label">How it works</div>
-      <h2>Simple, transparent planning</h2>
+      <h2>Here's how the process works.</h2>
     </div>
     
     <div class="process-grid fade-up" id="scrollable-grid">
       <div class="process-step">
         <div class="step-num">1</div>
-        <h4>Pay concierge deposit</h4>
-        <p>Begin your personalized travel planning by paying the initial $150 concierge deposit.</p>
+        <h4>Submit your travel request</h4>
+        <p>Tell us where you want to go, when you want to travel, and what kind of support you need.</p>
       </div>
       <div class="process-step">
         <div class="step-num">2</div>
-        <h4>Complete onboarding form</h4>
-        <p>Fill out our comprehensive onboarding form to tell us exactly where, when, and how you want to travel.</p>
+        <h4>Request review & trip fit</h4>
+        <p>We'll review your request and determine the best planning approach for your trip.</p>
       </div>
       <div class="process-step">
         <div class="step-num">3</div>
-        <h4>Receive curated options & finalize</h4>
-        <p>Review your personalized options, approve the final itinerary, and we'll secure all your bookings.</p>
+        <h4>Begin planning</h4>
+        <p>If your trip is a fit, you'll receive the next steps to complete payment, submit your detailed intake, and begin planning.</p>
       </div>
     </div>
 
@@ -1309,8 +1367,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
       
       <div class="concierge-left">
         <h3>Your Personal Concierge Service</h3>
-        <p class="desc">Airtrot Travels provides personalized travel planning and concierge services tailored to each client's preferences, destination, and budget. To begin, clients pay a concierge deposit which covers itinerary design, research, and planning services.</p>
-        <p class="fine-print">* The $150 concierge fee is applied toward the final cost of the trip when bookings are confirmed.</p>
+        <p class="desc">Airtrot Travels provides personalized travel planning and concierge support tailored to your destination, preferences, timing, and budget. Start by sharing a brief travel request so we can determine the best planning path for your trip.</p>
+        <p class="fine-print">Concierge planning starts at $150. We'll review your request and follow up with the best path forward for your trip.</p>
+        <div style="margin-top: 22px;">
+          <a href="/concierge-services/" class="pill-btn pill-outline">Explore Concierge Services</a>
+        </div>
       </div>
       
       <!-- EXCLUSIVE AMEX "BLACK CARD" STYLED BOX & CTA -->
@@ -1350,7 +1411,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
             </div>
 
             <div class="card-bottom">
-              <div class="card-embossed-amount">$150.00 DEPOSIT</div>
+              <div class="card-embossed-amount">TRAVEL REQUEST</div>
               <div class="card-details-row">
                 <div class="card-name">CONCIERGE CLIENT</div>
                 <div class="card-member">
@@ -1364,26 +1425,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
 
         <!-- NEW PERMANENT CTA BUTTON -->
         <div class="concierge-cta-area">
-          <a href="https://buy.stripe.com/14AfZh6yE9E1eCe33I5Rm00" target="_blank" class="cta-primary-btn">✨ Begin Your Concierge Experience</a>
-          <span class="concierge-urgency">By proceeding, you agree to our <a href="https://www.airtrottravels.com/refund-policy">Refund & Cancellation Policy</a>.</span>
+          <a href="#travel-request-form" class="cta-primary-btn">✨ Plan My Trip</a>
+          <span class="concierge-urgency">Submit your request first. If your trip is a fit, we'll send your planning fee link and detailed intake form.</span>
         </div>
 
         <!-- SECURE PAYMENT TRUST LOGOS -->
         <div class="secure-payment-trust">
           <div class="secure-payment-text">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-            Secure Payment
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+            Request Review
           </div>
-          <div class="payment-logos-row">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" alt="Stripe" loading="lazy" decoding="async">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" class="paypal-logo" loading="lazy" decoding="async">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg" alt="Apple Pay" loading="lazy" decoding="async">
-          </div>
+          <div class="payment-logos-row" style="filter: none; opacity: 0.8; font-size: 13px; color: var(--muted); text-align: center; line-height: 1.4;">No payment required to inquire • Personalized fit review</div>
         </div>
       </div>
 
     </div>
 
+  </div>
+</section>
+
+<!-- TYPEFORM PLACEHOLDER: GENERAL TRAVEL REQUEST FORM -->
+<section class="typeform-placeholder-section" id="travel-request-form">
+  <div class="container">
+    <div class="typeform-placeholder-card fade-up">
+      <span class="typeform-placeholder-label">TRAVEL REQUEST FORM</span>
+      <h3>Tell Us About Your Trip</h3>
+      <p>Complete the Airtrot travel request form below.</p>
+      <p><a href="https://form.typeform.com/to/oZGWL72Z" target="_blank">https://form.typeform.com/to/oZGWL72Z</a></p>
+    </div>
   </div>
 </section>
 
@@ -1432,11 +1501,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
 <!-- CONTACT CTA -->
 <section class="cta-contact" id="contact">
   <div class="container fade-up">
-    <h2>Need Help Before You Start?</h2>
-    <p>Speak instantly with a travel agent for quick replies, general inquiries, or last-minute travel support before beginning your formal planning.</p>
+    <h2>Need Help Planning Your Trip?</h2>
+    <p>Share your travel goals and we'll help determine the best next step for your trip.</p>
     
     <div class="contact-methods">
-      <a href="https://buy.stripe.com/14AfZh6yE9E1eCe33I5Rm00" target="_blank" class="pill-btn pill-dark">✨ Begin Your Concierge Experience</a>
+      <a href="#travel-request-form" class="pill-btn pill-dark">✨ Plan My Trip</a>
     </div>
     
     <div class="secondary-contacts">
